@@ -5,3 +5,4 @@ if not functions -q fisher
 end
 set fish_greeting
 set pure_symbol_prompt ▲ 
+alias ci="code-insiders"
