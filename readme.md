@@ -26,7 +26,8 @@ sh dots.sh [-u USER] [-e EMAIL]
 .config
 └── fish
     ├── config.fish
-    └── fishfile
+    ├── fishfile
+    └── fish_variables
 Library
 ├── Fonts
 └── Application Support

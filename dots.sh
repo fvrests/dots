@@ -184,8 +184,10 @@ config_apps() {
 
   if [ $(which fish) ]; then
     item "Copying Fish settings"
+    mkdir -p ~/.config/fish
     cp -r $app/config.fish ~/.config/fish/config.fish
     cp -r $app/fishfile ~/.config/fish/fishfile
+    cp -r $app/fish_variables ~/.config/fish/fish_variables
   fi
 
   if [ $(which hyper) ]; then
@@ -196,7 +198,7 @@ config_apps() {
   if [ $(which code-insiders) ]; then
     item "Copying VSCode Insiders settings"
     mkdir -p ~/Library/Application\ Support/Code\ -\ Insiders/User
-    cp $app/vscode/settings.json ~/Library/Application\ Support/Code\ -\ Insiders/User/settings.json
+    cp $app/vscode.json ~/Library/Application\ Support/Code\ -\ Insiders/User/settings.json
 
     code-insiders --install-extension dbaeumer.vscode-eslint &>/dev/null;
     code-insiders --install-extension esbenp.prettier-vscode &>/dev/null;
