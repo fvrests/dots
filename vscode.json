@@ -1,11 +1,13 @@
 {
   // theme & typography
   "workbench.colorTheme": "Rosé Pine",
+  "workbench.iconTheme": "Rosé Pine Icons",
   "editor.fontFamily": "'Dank Mono', 'SF Mono', 'SFMono-Regular', Menlo, Monaco, 'Courier New', monospace",
   "editor.fontLigatures": true,
   "editor.fontWeight": "600",
   "editor.fontSize": 14,
-  "terminal.integrated.fontWeight": "600",
+  "terminal.integrated.fontWeight": "400",
+  "terminal.integrated.fontSize": 13,
   "workbench.fontAliasing": "auto",
   "editor.lineHeight": 26,
   "terminal.integrated.lineHeight": 1.15,
@@ -21,18 +23,16 @@
   "editor.padding.top": 26,
   "editor.padding.bottom": 26,
   "workbench.tree.indent": 14,
-  "editor.tabSize": 2,
+  "editor.tabSize": 4,
   // change appearance settings
   "editor.wordWrap": "on",
   "scm.diffDecorationsGutterVisibility": "hover",
-  "editor.renderLineHighlight": "gutter",
   "zenMode.fullScreen": false,
   "zenMode.hideStatusBar": false,
   "zenMode.restore": true,
   "zenMode.hideLineNumbers": false,
   "zenMode.hideTabs": false,
   // turn off / hide unwanted features
-  "workbench.activityBar.visible": false,
   "breadcrumbs.enabled": false,
   "editor.folding": false,
   "editor.glyphMargin": false,
@@ -43,8 +43,6 @@
   "explorer.decorations.badges": false,
   "explorer.openEditors.visible": 0,
   "workbench.editor.showIcons": false,
-  "workbench.editor.tabCloseButton": "off",
-  "workbench.iconTheme": null,
   "workbench.tips.enabled": false,
   "editor.occurrencesHighlight": false,
   "git.decorations.enabled": false,
@@ -76,26 +74,20 @@
     "scrollbarSlider.hoverBackground": "#0000",
     "scrollbar.shadow": "#0000",
     // theme settings
-    "editorGroup.border": "#0000",
-    "editorLineNumber.foreground": "#0000",
-    "editorGroupHeader.tabsBorder": "#0000",
-    "tab.activeBackground": "#0000",
     "tab.border": "#0000",
     "editorIndentGuide.background": "#0000",
     "editorIndentGuide.activeBackground": "#65618e4d"
   },
   // formatting / editor behavior
   "editor.formatOnSave": true,
-  "workbench.startupEditor": "newUntitledFile",
+  "workbench.startupEditor": "none",
   "git.autofetch": true,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
-  "eslint.validate": ["javascript", "javascriptreact", "vue"],
   "prettier.singleQuote": true,
   "prettier.semi": false,
   "explorer.confirmDelete": false,
-  "npm.enableScriptExplorer": false,
   "vim.handleKeys": {
     "<D-c>": false
   },
@@ -108,7 +100,11 @@
   },
   "vetur.validation.template": false,
   "css.validate": false,
-  "window.openFoldersInNewWindow": "on",
   "window.openWithoutArgumentsInNewWindow": "on",
-  "window.openFilesInNewWindow": "on"
+  "explorer.confirmDragAndDrop": false,
+  "workbench.statusBar.visible": true,
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "window.zoomLevel": 0
 }
