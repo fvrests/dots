@@ -67,8 +67,9 @@ Library
 
 - Preferences > Keyboard > Modifier Keys > Map caps lock to escape
 - Preferences > Displays > Night Shift > Schedule: Sunset to Sunrise
-- Preferences > Privacy > Full Disk Access > Allow Terminal.app\* \* _Needed for zapping brew casks and other priviledged tasks_
+- Preferences > Privacy > Full Disk Access > Allow Terminal.app\* \* _Needed for zapping brew casks and other privileged tasks_
 - Code - Insiders > Configure Runtime Arguments: `"disable-hardware-acceleration": true`
+- Code - Insiders > Extensions > Disable default color schemes
 - install Dank Mono font
 - add ssh key from clipboard to github's ssh key settings
 
