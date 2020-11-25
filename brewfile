@@ -6,7 +6,6 @@ tap "homebrew/core"
 
 brew "ag"
 brew "fd"
-brew "mas"
 brew "node"
 brew "yarn"
 brew "fish"
@@ -16,5 +15,4 @@ cask "google-chrome"
 cask "hyper"
 cask "visual-studio-code-insiders"
 cask "1password"
-mas "Magnet", id: 441258766
-mas "Bear", id: 1091189122
+cask "rectangle"

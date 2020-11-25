@@ -202,8 +202,13 @@ config_apps() {
 
     code-insiders --install-extension dbaeumer.vscode-eslint &>/dev/null;
     code-insiders --install-extension esbenp.prettier-vscode &>/dev/null;
-    code-insiders --install-extension mvllow.rose-pine &>/dev/null;
     code-insiders --install-extension vscodevim.vim &>/dev/null;
+    code-insiders --install-extension octref.vetur &>/dev/null;
+    code-insiders --install-extension bradlc.vscode-tailwindcss &>/dev/null;
+    code-insiders --install-extension mvllow.rose-pine &>/dev/null;
+    code-insiders --install-extension soft-aesthetic.soft-era-theme &>/dev/null;
+    code-insiders --install-extension chrisnevers.rusty &>/dev/null;
+
   fi
 
   echo
