@@ -1,18 +1,29 @@
 {
-  // theme & typography
   "workbench.colorTheme": "Rosé Pine",
-  "workbench.iconTheme": "Rosé Pine Icons",
-  "editor.fontFamily": "'Dank Mono', 'SF Mono', 'SFMono-Regular', Menlo, Monaco, 'Courier New', monospace",
+  "workbench.iconTheme": "rose-pine-icons",
+  "editor.fontFamily": "'Cartograph CF', 'SF Mono', 'SFMono-Regular', Menlo, Monaco, 'Courier New', monospace",
   "editor.fontLigatures": true,
-  "editor.fontWeight": "600",
-  "editor.fontSize": 14,
-  "terminal.integrated.fontWeight": "400",
-  "terminal.integrated.fontSize": 13,
+  "editor.fontWeight": "700",
+  "editor.fontSize": 13,
+  "terminal.integrated.fontWeight": "600",
+  "terminal.integrated.fontSize": 12,
   "workbench.fontAliasing": "auto",
   "editor.lineHeight": 26,
   "terminal.integrated.lineHeight": 1.15,
   "editor.tokenColorCustomizations": {
     "comments": {
+      "fontStyle": "italic"
+    },
+    "support.function": {
+      "fontStyle": "italic"
+    },
+    "punctuation.definition.comment": {
+      "fontStyle": "italic"
+    },
+    "entity.other.inherited-class": {
+      "fontStyle": "italic"
+    },
+    "entity.other.attribute-name": {
       "fontStyle": "italic"
     },
     "variables": {
@@ -75,7 +86,7 @@
     "scrollbar.shadow": "#0000",
     // theme settings
     "tab.border": "#0000",
-    "editorIndentGuide.background": "#0000",
+    // "editorIndentGuide.background": "#0000",
     "editorIndentGuide.activeBackground": "#65618e4d"
   },
   // formatting / editor behavior
@@ -88,23 +99,27 @@
   "prettier.singleQuote": true,
   "prettier.semi": false,
   "explorer.confirmDelete": false,
+  "vim.vimrc.enable": true,
   "vim.handleKeys": {
-    "<D-c>": false
+    "<c-d>": true
   },
   "html.autoClosingTags": false,
   "javascript.autoClosingTags": false,
   "typescript.autoClosingTags": false,
   "search.exclude": {
     "**/node_modules": true,
-    "**/.git": true
+    "**/.git": true,
+    "lib/**": true,
+    "dist/**": true
   },
-  "vetur.validation.template": false,
+  // "vetur.validation.template": false,
   "css.validate": false,
+  "vetur.validation.style": false,
   "window.openWithoutArgumentsInNewWindow": "on",
   "explorer.confirmDragAndDrop": false,
-  "workbench.statusBar.visible": true,
-  "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "window.zoomLevel": 0
+  "workbench.statusBar.visible": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "workbench.editor.limit.enabled": true,
+  "workbench.editor.limit.value": 4,
+  "vetur.validation.template": false
 }
