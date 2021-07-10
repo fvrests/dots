@@ -1,8 +1,8 @@
 {
-  "workbench.colorTheme": "Rosé Pine",
+  "workbench.colorTheme": "Rosé Pine Dawn",
   "workbench.iconTheme": "rose-pine-icons",
   "editor.fontFamily": "'Cartograph CF', 'SF Mono', 'SFMono-Regular', Menlo, Monaco, 'Courier New', monospace",
-  "editor.fontLigatures": true,
+  "editor.fontLigatures": false,
   "editor.fontWeight": "700",
   "editor.fontSize": 13,
   "terminal.integrated.fontWeight": "600",
@@ -10,6 +10,7 @@
   "workbench.fontAliasing": "auto",
   "editor.lineHeight": 26,
   "terminal.integrated.lineHeight": 1.15,
+  // italics even on non-italic themes
   "editor.tokenColorCustomizations": {
     "comments": {
       "fontStyle": "italic"
@@ -28,35 +29,87 @@
     },
     "variables": {
       "fontStyle": "italic"
-    }
+    },
+    "textMateRules": [
+      {
+        "scope": "entity.other.attribute-name",
+        "settings": {
+          "fontStyle": "italic"
+        }
+      },
+      {
+        "scope": "meta.tag.other.html",
+        "settings": {
+          "foreground": "#6E6A86"
+        }
+      },
+      {
+        "scope": "meta.property-name.css",
+        "settings": {
+          "foreground": "#9CCFD8"
+        }
+      },
+      {
+        "scope": "meta.property-value.css",
+        "settings": {
+          "foreground": "#F6C177"
+        }
+      },
+      {
+        "scope": "meta.directive.vue",
+        "settings": {
+          "foreground": "#C4A7E7",
+          "fontStyle": "italic"
+        }
+      }
+    ]
   },
+  // todohighlight extension settings
+  "todohighlight.isCaseSensitive": false,
+  "todohighlight.keywords": [
+    {
+      "text": "todo:",
+      "color": "#1f1d2e",
+      "backgroundColor": "#ebbcba99",
+      "border": "2px solid #ebbcba99",
+      "borderRadius": "4px",
+      "isWholeLine": true
+    },
+    {
+      "text": "note:",
+      "color": "#1f1d2e",
+      "backgroundColor": "#f6c17799",
+      "border": "2px solid #f6c17799",
+      "borderRadius": "4px",
+      "isWholeLine": true
+    }
+  ],
   // layout
   "editor.padding.top": 26,
   "editor.padding.bottom": 26,
   "workbench.tree.indent": 14,
   "editor.tabSize": 4,
+  "workbench.editor.decorations.colors": true,
+  "workbench.editor.decorations.badges": true,
   // change appearance settings
   "editor.wordWrap": "on",
   "scm.diffDecorationsGutterVisibility": "hover",
-  "zenMode.fullScreen": false,
   "zenMode.hideStatusBar": false,
+  "zenMode.fullScreen": false,
   "zenMode.restore": true,
   "zenMode.hideLineNumbers": false,
   "zenMode.hideTabs": false,
   // turn off / hide unwanted features
   "breadcrumbs.enabled": false,
   "editor.folding": false,
-  "editor.glyphMargin": false,
   "editor.hideCursorInOverviewRuler": true,
   "editor.minimap.enabled": false,
   "editor.scrollbar.horizontal": "hidden",
   "editor.scrollbar.vertical": "hidden",
-  "explorer.decorations.badges": false,
   "explorer.openEditors.visible": 0,
   "workbench.editor.showIcons": false,
   "workbench.tips.enabled": false,
   "editor.occurrencesHighlight": false,
-  "git.decorations.enabled": false,
   "editor.lightbulb.enabled": false,
   "editor.parameterHints": false,
   "workbench.editor.enablePreview": false,
@@ -70,16 +123,16 @@
     "editorOverviewRuler.commonContentForeground": "#0000",
     "editorOverviewRuler.currentContentForeground": "#0000",
     "editorOverviewRuler.deletedForeground": "#0000",
-    "editorOverviewRuler.errorForeground": "#0000",
-    "editorOverviewRuler.findMatchForeground": "#0000",
+    // "editorOverviewRuler.errorForeground": "#0000",
+    // "editorOverviewRuler.findMatchForeground": "#0000",
     "editorOverviewRuler.incomingContentForeground": "#0000",
     "editorOverviewRuler.infoForeground": "#0000",
     "editorOverviewRuler.modifiedForeground": "#0000",
     "editorOverviewRuler.rangeHighlightForeground": "#0000",
     "editorOverviewRuler.selectionHighlightForeground": "#0000",
-    "editorOverviewRuler.warningForeground": "#0000",
-    "editorOverviewRuler.wordHighlightForeground": "#0000",
-    "editorOverviewRuler.wordHighlightStrongForeground": "#0000",
+    // "editorOverviewRuler.warningForeground": "#0000",
+    // "editorOverviewRuler.wordHighlightForeground": "#0000",
+    // "editorOverviewRuler.wordHighlightStrongForeground": "#0000",
     "scrollbarSlider.activeBackground": "#0000",
     "scrollbarSlider.background": "#0000",
     "scrollbarSlider.hoverBackground": "#0000",
@@ -91,6 +144,8 @@
   },
   // formatting / editor behavior
   "editor.formatOnSave": true,
+  "debug.showInlineBreakpointCandidates": false,
+  "debug.allowBreakpointsEverywhere": false,
   "workbench.startupEditor": "none",
   "git.autofetch": true,
   "editor.codeActionsOnSave": {
@@ -112,14 +167,19 @@
     "lib/**": true,
     "dist/**": true
   },
-  // "vetur.validation.template": false,
   "css.validate": false,
   "vetur.validation.style": false,
   "window.openWithoutArgumentsInNewWindow": "on",
   "explorer.confirmDragAndDrop": false,
-  "workbench.statusBar.visible": false,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "workbench.editor.limit.enabled": true,
-  "workbench.editor.limit.value": 4,
-  "vetur.validation.template": false
+  "workbench.editor.limit.value": 3,
+  "vetur.validation.template": false,
+  "editor.cursorBlinking": "solid",
+  "workbench.sideBar.location": "right",
+  "[svelte]": {
+    "editor.defaultFormatter": "svelte.svelte-vscode"
+  },
+  "liveshare.presence": true,
+  "volar.codeLens.pugTools": false
 }
