@@ -75,7 +75,7 @@ init() {
   if ! type brew &>/dev/null; then
     item "https://brew.sh"
 
-     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   else
     item "Oh, it seems you already have it! Let's go on then."
   fi
