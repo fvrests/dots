@@ -7,7 +7,7 @@ this script was created to automate setup of a fresh install of macOS with my ow
 ## ✨ download
 
 ```sh
-curl -LJO https://raw.githubusercontent.com/fvrests/dots/master/dots.sh
+curl -LJO https://raw.githubusercontent.com/fvrests/dots/master/dots.sh && sh ./dots.sh
 ```
 
 ## 🌛 git setup
