@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 app=~/.config/fvrests/dots
 url=https://github.com/fvrests/dots
@@ -92,6 +92,10 @@ init() {
   brew bundle --file="$app/brewfile" &>/dev/null;
   brew cleanup &>/dev/null;
 
+  # if ! [[ -z ${git_email} ]]; then
+  # mas signin $git_email
+  # fi
+
   item "Sweeping up..."
   echo
 
@@ -148,25 +152,30 @@ config_git() {
     item "Git already knows you, traveler. Let's continue."
   fi
 
+  echo ".DS_Store" > /.gitignore
+git config --global core.excludesfile ~/.gitignore
+git config --global pull.rebase false
+git config --global init.defaultBranch "main"
+
   echo
 }
 
 config_ssh() {
   echo "🧝‍♀ Next we'll need to forge your ssh keys..."
 
-  if ! [ -f ~/.ssh/id_rsa ]; then
+if ! [ -f ~/.ssh/id_ed25519 ]; then
     if ! [[ -z ${git_email} ]]; then
       item "Generating key with git email"
-      ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa -q -N "" -C $git_email
+   ssh-keygen -t ed25519 -C $git_email -f ~/.ssh/id_ed25519 -q -N ""
     else
       item "Generating key with computer hostname"
-      ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa -q -N ""
+      ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519 -q -N ""
     fi
 
-    pbcopy < ~/.ssh/id_rsa.pub
+   	pbcopy <~/.ssh/id_ed25519.pub
 
     item "Storing your public key in the clipboard."
-    item "Saved to ~/.ssh/id_rsa.pub"
+    item "Saved to ~/.ssh/id_ed25519.pub"
   else
     item "Since you already have them from your last adventure, I'll continue."
   fi
@@ -190,24 +199,23 @@ config_apps() {
     cp -r $app/fish_variables ~/.config/fish/fish_variables
   fi
 
-  if [ $(which hyper) ]; then
-    item "Copying Hyper settings"
-    cp -r $app/.hyper.js ~/
-  fi
+
+    item "Copying iTerm settings"
+    cp -r $app/com.googlecode.iterm2.plist ~/.config/
 
   if [ $(which code-insiders) ]; then
     item "Copying VSCode Insiders settings"
     mkdir -p ~/Library/Application\ Support/Code\ -\ Insiders/User
     cp $app/vscode.json ~/Library/Application\ Support/Code\ -\ Insiders/User/settings.json
 
-    code-insiders --install-extension dbaeumer.vscode-eslint &>/dev/null;
     code-insiders --install-extension esbenp.prettier-vscode &>/dev/null;
     code-insiders --install-extension vscodevim.vim &>/dev/null;
-    code-insiders --install-extension octref.vetur &>/dev/null;
+    # code-insiders --install-extension octref.vetur &>/dev/null;
+    code-insiders --install-extension johnsoncodehk.volar &>/dev/null;
     code-insiders --install-extension bradlc.vscode-tailwindcss &>/dev/null;
     code-insiders --install-extension mvllow.rose-pine &>/dev/null;
-    code-insiders --install-extension soft-aesthetic.soft-era-theme &>/dev/null;
-    code-insiders --install-extension chrisnevers.rusty &>/dev/null;
+    code-insiders --install-extension arcticicestudio.nord-visual-studio-code &>/dev/null;
+    code-insiders --install-extension wayou.vscode-todo-highlight &>/dev/null;
 
   fi
 
@@ -225,9 +233,8 @@ config_prefs() {
 
   # Global: change accent color to pink
   defaults write -globalDomain AppleAccentColor -int 6
-  # Global: change highlight color to pink
-  defaults write -globalDomain AppleHighlightColor -string "1.000000 0.749020 0.823529 Pink"
-
+  # Global: change highlight color to purple
+  defaults write -globalDomain AppleHighlightColor -string "0.968627 0.831373 1.000000 Purple"
   # Dock: enable autohide
   defaults write com.apple.dock autohide -bool true
   # Dock: hide recent apps
@@ -263,8 +270,8 @@ config_prefs() {
   # Finder: disable warning when emptying trash
   defaults write com.apple.finder WarnOnEmptyTrash -bool false
 
-  # Menubar: show battery percentage
-  defaults write com.apple.menuextra.battery ShowPercent -string "YES"
+   # Menubar: enable autohide
+  defaults write NSGlobalDomain _HIHideMenuBar -bool true
 
   echo
 }

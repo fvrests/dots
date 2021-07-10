@@ -22,8 +22,8 @@ sh dots.sh [-u USER] [-e EMAIL]
 
 ```
 .zshrc
-.hyper.js
 .config
+└── com.googlecode.iterm2.plist
 └── fish
     ├── config.fish
     ├── fishfile
@@ -65,12 +65,13 @@ Library
 
 ## ✨ manual settings
 
+- Before running, sign in to Mac app store
 - Preferences > Keyboard > Modifier Keys > Map caps lock to escape
 - Preferences > Displays > Night Shift > Schedule: Sunset to Sunrise
 - Preferences > Privacy > Full Disk Access > Allow Terminal.app\* \* _Needed for zapping brew casks and other privileged tasks_
-- Code - Insiders > Configure Runtime Arguments: `"disable-hardware-acceleration": true`
 - Code - Insiders > Extensions > Disable default color schemes
-- install Dank Mono font
+- Code - Insiders > Sign in to Settings Sync
+- install Cartograph font
 - add ssh key from clipboard to github's ssh key settings
 
 Inspired by [mvllow/dots](https://github.com/mvllow/dots)
