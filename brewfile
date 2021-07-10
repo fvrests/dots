@@ -3,16 +3,25 @@ tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
+tap "homebrew/cask-fonts"
 
-brew "ag"
-brew "fd"
 brew "node"
 brew "yarn"
 brew "fish"
+brew "mas"
 brew "terminal-notifier"
-cask "figma"
-cask "google-chrome"
-cask "hyper"
 cask "visual-studio-code-insiders"
 cask "1password"
 cask "rectangle"
+cask "1password-beta"			
+cask "discord"				
+cask "iterm2-beta"			
+cask "font-fira-mono-nerd-font"
+
+mas "1494615606" #  CalcBar               (1.6)
+mas "957734279" #   Toggl Track           (7.5.441)
+mas "803453959" #   Slack                 (4.17.0)
+mas "1176895641" #  Spark                 (2.10.0)
+mas "409201541" #   Pages                 (11.1)
+mas "409203825" #   Numbers               (11.1)
+
