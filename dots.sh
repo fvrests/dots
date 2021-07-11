@@ -152,7 +152,7 @@ config_git() {
 		item "Git already knows you, traveler. Let's continue."
 	fi
 
-	echo ".DS_Store" >/.gitignore
+	echo ".DS_Store" >~/.gitignore
 	git config --global core.excludesfile ~/.gitignore
 	git config --global pull.rebase false
 	git config --global init.defaultBranch "main"
