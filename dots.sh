@@ -202,18 +202,16 @@ config_apps() {
 	if [ $(which fish) ]; then
 		item "Copying Fish settings"
 		mkdir -p ~/.config/fish
-		cp -r $app/config.fish ~/.config/fish/config.fish
-		cp -r $app/fishfile ~/.config/fish/fishfile
-		cp -r $app/fish_variables ~/.config/fish/fish_variables
+		cp -r $app/fish/. ~/.config/fish/
 	fi
 
 	item "Copying iTerm settings"
-	cp -r $app/com.googlecode.iterm2.plist ~/Library/Preferences/
+	cp -r $app/iterm/com.googlecode.iterm2.plist ~/Library/Preferences/
 
 	if [ $(which code-insiders) ]; then
 		item "Copying VSCode Insiders settings"
 		mkdir -p ~/Library/Application\ Support/Code\ -\ Insiders/User
-		cp $app/vscode.json ~/Library/Application\ Support/Code\ -\ Insiders/User/settings.json
+		cp $app/vscode/settings.json ~/Library/Application\ Support/Code\ -\ Insiders/User/
 
 		code-insiders --install-extension esbenp.prettier-vscode &>/dev/null
 		code-insiders --install-extension vscodevim.vim &>/dev/null
