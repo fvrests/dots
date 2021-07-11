@@ -29,10 +29,11 @@ put_header() {
 	echo
 }
 
-while getopts u:e:h option; do
+while getopts u:e:s:h option; do
 	case "${option}" in
 	u) git_user=${OPTARG} ;;
 	e) git_email=${OPTARG} ;;
+	s) shell=${OPTARG} ;;
 	h)
 		put_header
 		pink "🧝‍♀️ Welcome, traveler. Let me be of some assistance. This script was written to guide you through the journey of setting up your machine after cleansing it of the burden of the past."
@@ -45,7 +46,13 @@ while getopts u:e:h option; do
 		echo
 		echo "  -u [user]           set your user for global git config"
 		echo "  -e [email]          set your email for global git config and ssh keys"
+		echo "  -s [shell]          set your default shell"
 		echo "  -h                  just type this if you get lost again, OK?"
+		echo
+		echo "Other travelers on this quest have tried:"
+		echo
+		echo "  $ sh $0 -u wizard -e wizard@firemail.com"
+		echo "  $ sh $0 -s fish"
 		echo
 		gray "And if you require further training,"
 		gray "just follow these directions:"
@@ -181,6 +188,15 @@ config_apps() {
 	if [ $(which zsh) ]; then
 		item "Copying Zsh settings"
 		cp -r $app/.zshrc ~/
+	fi
+
+	if ! [ -z ${shell} ]; then
+		if [ $(which $shell) ]; then
+			echo "Setting default shell"
+			item "$shell"
+			echo $(which $shell) | sudo tee -a /etc/shells
+			chsh -s $(which $shell)
+		fi
 	fi
 
 	if [ $(which fish) ]; then
