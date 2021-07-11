@@ -208,7 +208,7 @@ config_apps() {
 	fi
 
 	item "Copying iTerm settings"
-	cp -r $app/com.googlecode.iterm2.plist ~/.config/
+	cp -r $app/com.googlecode.iterm2.plist ~/Library/Preferences/
 
 	if [ $(which code-insiders) ]; then
 		item "Copying VSCode Insiders settings"
