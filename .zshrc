@@ -1,2 +1,1 @@
-SHELL=/usr/local/bin/fish
-[ -x $SHELL ] && exec $SHELL
+export PATH=/opt/homebrew/bin:$PATH
