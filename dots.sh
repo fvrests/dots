@@ -29,15 +29,10 @@ put_header() {
 	echo
 }
 
-while getopts u:e:rDh option; do
+while getopts u:e:h option; do
 	case "${option}" in
 	u) git_user=${OPTARG} ;;
 	e) git_email=${OPTARG} ;;
-	r) rm -rf $app ;;
-	D)
-		rm -rf $app
-		exit 2
-		;;
 	h)
 		put_header
 		pink "🧝‍♀️ Welcome, traveler. Let me be of some assistance. This script was written to guide you through the journey of setting up your machine after cleansing it of the burden of the past."
@@ -50,8 +45,6 @@ while getopts u:e:rDh option; do
 		echo
 		echo "  -u [user]           set your user for global git config"
 		echo "  -e [email]          set your email for global git config and ssh keys"
-		echo "  -r                  replace $app with remote"
-		echo "  -D                  delete $app and exit"
 		echo "  -h                  just type this if you get lost again, OK?"
 		echo
 		gray "And if you require further training,"
