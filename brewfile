@@ -16,10 +16,10 @@ cask "discord"
 cask "iterm2-beta"			
 cask "font-fira-mono-nerd-font"
 
-mas "1494615606" #  CalcBar               (1.6)
-mas "957734279" #   Toggl Track           (7.5.441)
-mas "803453959" #   Slack                 (4.17.0)
-mas "1176895641" #  Spark                 (2.10.0)
-mas "409201541" #   Pages                 (11.1)
-mas "409203825" #   Numbers               (11.1)
+mas "CalcBar", id: 1494615606
+mas "Toggl Track", id: 957734279
+mas "Slack", id: 803453959
+mas "Spark", id: 1176895641
+mas "Pages", id: 409201541
+mas "Numbers", id: 409203825
 
