@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 
-app=~/.config/fvrests/dots
-url=https://github.com/fvrests/dots
-repo=https://github.com/fvrests/dots.git
+app=~/.config/fvrests-dots
+repo=https://github.com/fvrests/dots
 
 pink() {
 	echo "\033[0;35m$1\033[0m"
@@ -26,7 +25,7 @@ put_header() {
 	echo "✨ 🌛 🌞 dots 🌞 🌜 ✨"
 	echo
 	purple "a mystical quest to set up your dev machine"
-	pink $url
+	pink $repo
 	echo
 }
 
@@ -58,7 +57,7 @@ while getopts u:e:rDh option; do
 		gray "And if you require further training,"
 		gray "just follow these directions:"
 		echo
-		echo "  $url"
+		echo "  $repo"
 		echo
 		pink "🧝‍♀️ Run along now!"
 		pink "   Be careful not to disturb the creatures of the forest on your way,"
@@ -283,7 +282,7 @@ end_journey() {
 	echo "✨ 🌛 🌞 dots 🌞 🌜 ✨"
 	echo
 	purple "Full documentation for this script can be found here:"
-	pink $url
+	pink $repo
 	echo
 }
 
