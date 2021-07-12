@@ -79,6 +79,9 @@ init() {
 		item "Oh, it seems you already have it! Let's go on then."
 	fi
 
+	# Add brew to path for current session
+	# This is included in the shell configs but not available until a new session is cr
+	export PATH=/opt/homebrew/bin:$PATH
 	echo
 
 	get_command_line_tools
