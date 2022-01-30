@@ -1,47 +1,45 @@
-# ✨ 🌛 🌞 dots 🌞 🌜 ✨
+# dots
 
-a mystical quest to set up your dev machine
+**setting up barerepo for the first time**
 
-this script was created to automate setup of a fresh install of macOS with my own preferences. the vague fantasy quest theme is for our collective enjoyment.
+> [postylem/dotfiles](https://github.com/postylem/dotfiles)
 
-## ✨ download
-
-```sh
-curl -LJO https://raw.githubusercontent.com/fvrests/dots/master/dots.sh && sh ./dots.sh
-```
-
-## 🌛 git setup
-
-this script accepts custom git config/ssh keys.
+## download
 
 ```sh
-sh dots.sh [-u USER] [-e EMAIL]
+curl -LJO https://raw.githubusercontent.com/fvrests/dots/main/.config/dots/dots.sh && sh ./dots.sh
 ```
 
-## 🌞 modified files
+## manual installation
 
-```
-.zshrc
-.config
-└── com.googlecode.iterm2.plist
-└── fish
-    ├── config.fish
-    ├── fishfile
-    └── fish_variables
-Library
-├── Fonts
-└── Application Support
-    └── Code - Insiders
-        └── User
-            └── settings.json
+Clone to a temp directory
+
+```sh
+git clone \
+  --separate-git-dir=$HOME/dots.git \
+  https://github.com/fvrests/dots.git \
+  dots-tmp
 ```
 
-## 🌜 system preferences
+Copy working tree snapshot from the temp directory to the home directory, then delete the temp directory.
+
+```sh
+rsync --recursive --verbose --exclude '.git' dots-tmp/ $HOME/
+rm -rf dots-tmp
+```
+
+Optionally, add an alias to manage your dots directly.
+
+```sh
+alias .git='git --git-dir=$HOME/dots.git/ --work-tree=$HOME'
+```
+
+## system preferences
 
 | Setting                                 | Value |
 | --------------------------------------- | ----- |
 | **Global**                              |       |
-| Accent color                            | pink  |
+| Accent color pink                       |
 | Highlight color                         | pink  |
 | **Dock**                                |       |
 | Autohide                                | true  |
@@ -60,17 +58,15 @@ Library
 | **Finder**                              |       |
 | Warn on file extension change           | false |
 | Warn on emptying trash                  | false |
-| **Menubar**                             |       |
 | Show battery percentage                 | true  |
 
-## ✨ manual settings
+## manual settings
 
 - Before running, sign in to Mac app store
 - Preferences > Keyboard > Modifier Keys > Map caps lock to escape
 - Preferences > Displays > Night Shift > Schedule: Sunset to Sunrise
 - Preferences > Privacy > Full Disk Access > Allow Terminal.app\* \* _Needed for zapping brew casks and other privileged tasks_
 - Code - Insiders > Extensions > Disable default color schemes
-- Code - Insiders > Sign in to Settings Sync
 - install Cartograph font
 - add ssh key from clipboard to github's ssh key settings
 

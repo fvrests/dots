@@ -13,10 +13,8 @@ cask "visual-studio-code-insiders"
 cask "rectangle"
 cask "1password-beta"			
 cask "discord"				
-cask "iterm2-beta"			
 cask "font-fira-mono-nerd-font"
 
-mas "CalcBar", id: 1494615606
 mas "Toggl Track", id: 957734279
 mas "Slack", id: 803453959
 mas "Spark", id: 1176895641

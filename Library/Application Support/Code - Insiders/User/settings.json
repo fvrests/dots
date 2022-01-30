@@ -1,5 +1,5 @@
 {
-  "workbench.colorTheme": "Rosé Pine Dawn",
+  "workbench.colorTheme": "Rosé Pine",
   "workbench.iconTheme": "rose-pine-icons",
   "editor.fontFamily": "'Cartograph CF', 'SF Mono', 'SFMono-Regular', Menlo, Monaco, 'Courier New', monospace",
   "editor.fontLigatures": false,
@@ -71,16 +71,48 @@
       "text": "todo:",
       "color": "#1f1d2e",
       "backgroundColor": "#ebbcba99",
-      "border": "2px solid #ebbcba99",
-      "borderRadius": "4px",
+      "border": "2px solid var(--vscode-editor-background)",
+      "borderRadius": "6px",
       "isWholeLine": true
     },
     {
       "text": "note:",
       "color": "#1f1d2e",
       "backgroundColor": "#f6c17799",
-      "border": "2px solid #f6c17799",
-      "borderRadius": "4px",
+      "border": "2px solid var(--vscode-editor-background)",
+      "borderRadius": "6px",
+      "isWholeLine": true
+    },
+    {
+      "text": "fixme:",
+      "color": "#1f1d2e",
+      "backgroundColor": "#c4a7e799",
+      "border": "2px solid var(--vscode-editor-background)",
+      "borderRadius": "6px",
+      "isWholeLine": true
+    },
+    {
+      "text": "bug:",
+      "color": "#1f1d2e",
+      "backgroundColor": "#9ccfd899",
+      "border": "2px solid var(--vscode-editor-background)",
+      "borderRadius": "6px",
+      "isWholeLine": true
+    },
+    {
+      "text": "hack:",
+      "color": "#1f1d2e",
+      "backgroundColor": "#31748f99",
+      "border": "2px solid var(--vscode-editor-background)",
+      "borderRadius": "6px",
+      "isWholeLine": true
+    },
+    {
+      "text": "xxx:",
+      "color": "#1f1d2e",
+      "backgroundColor": "#eb6f9299",
+      "border": "2px solid var(--vscode-editor-background)",
+      "borderRadius": "6px",
       "isWholeLine": true
     }
   ],
@@ -97,7 +129,6 @@
   "zenMode.hideStatusBar": false,
   "zenMode.fullScreen": false,
   "zenMode.restore": true,
-  "zenMode.hideLineNumbers": false,
   "zenMode.hideTabs": false,
   // turn off / hide unwanted features
   "breadcrumbs.enabled": false,
@@ -154,10 +185,10 @@
   "prettier.singleQuote": true,
   "prettier.semi": false,
   "explorer.confirmDelete": false,
-  "vim.vimrc.enable": true,
   "vim.handleKeys": {
     "<c-d>": true
   },
+  "vim.vimrc.enable": true,
   "html.autoClosingTags": false,
   "javascript.autoClosingTags": false,
   "typescript.autoClosingTags": false,
@@ -173,7 +204,7 @@
   "explorer.confirmDragAndDrop": false,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "workbench.editor.limit.enabled": true,
-  "workbench.editor.limit.value": 3,
+  "workbench.editor.limit.value": 4,
   "vetur.validation.template": false,
   "editor.cursorBlinking": "solid",
   "workbench.sideBar.location": "right",
@@ -181,5 +212,10 @@
     "editor.defaultFormatter": "svelte.svelte-vscode"
   },
   "liveshare.presence": true,
-  "volar.codeLens.pugTools": false
+  "volar.codeLens.pugTools": false,
+  "svelte.enable-ts-plugin": true,
+  "[lua]": {
+    "editor.defaultFormatter": "JohnnyMorganz.stylua"
+  },
+  "liveshare.autoShareServers": false
 }
