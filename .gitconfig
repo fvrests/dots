@@ -1,0 +1,9 @@
+[user]
+	name = fvrests
+	email = fvrests@icloud.com
+[core]
+	excludesfile = ~/.config/dots/.gitignore
+[pull]
+	rebase = false
+[init]
+	defaultBranch = main
