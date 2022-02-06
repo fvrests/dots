@@ -3,17 +3,19 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 	vim.fn.execute("!git clone --depth 1 https://github.com/wbthomason/packer.nvim " .. install_path)
 end
 
-local p = require("rose-pine.palette")
-
 require("packer").startup(function(use)
 	use("wbthomason/packer.nvim")
 	use("editorconfig/editorconfig-vim")
 	use({
-		"rose-pine/neovim",
+		"~/dev/rose-pine-neovim",
 		as = "rose-pine",
 		config = function()
-			local p = require("rose-pine.palette")
-			vim.g.rose_pine_colors = { border = p.text }
+			-- local p = require("rose-pine.palette")
+			require("rose-pine").setup({
+				groups = {
+					border = "text",
+				},
+			})
 			vim.cmd("colorscheme rose-pine")
 		end,
 	})
@@ -75,7 +77,20 @@ require("packer").startup(function(use)
 		config = function()
 			require("telescope").setup({
 				defaults = { layout_config = { horizontal = { preview_width = 0.6 } } },
-				pickers = { find_files = { theme = "dropdown", previewer = false, initial_mode = "normal" } },
+				pickers = {
+					find_files = {
+						find_command = { "fd", "--type", "f", "--strip-cwd-prefix" },
+						theme = "dropdown",
+						previewer = false,
+					},
+					oldfiles = {
+						only_cwd = true,
+						find_command = { "fd", "--type", "f", "--strip-cwd-prefix" },
+						theme = "dropdown",
+						previewer = false,
+						initial_mode = "normal",
+					},
+				},
 			})
 		end,
 	})
@@ -120,9 +135,7 @@ require("packer").startup(function(use)
 				vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 			end
 			vim.diagnostic.config({
-				virtual_text = {
-					prefix = "●",
-				},
+				virtual_text = false,
 			})
 
 			local servers = {
@@ -201,51 +214,27 @@ require("packer").startup(function(use)
 	use({
 		"nvim-lualine/lualine.nvim",
 		config = function()
-			local p = require("rose-pine.palette")
+			vim.opt.showmode = false
 			require("lualine").setup({
 				options = {
+					theme = "rose-pine-inverse",
 					icons_enabled = false,
-					theme = {
-						normal = {
-							a = { bg = p.overlay, fg = p.rose, gui = "bold" },
-							b = { bg = p.overlay, fg = p.text },
-							c = { bg = p.overlay, fg = p.subtle },
-						},
-						insert = {
-							a = { bg = p.overlay, fg = p.foam, gui = "bold" },
-							b = { bg = p.overlay, fg = p.text },
-							c = { bg = p.overlay, fg = p.subtle },
-						},
-						visual = {
-							a = { bg = p.overlay, fg = p.iris, gui = "bold" },
-							b = { bg = p.overlay, fg = p.text },
-							c = { bg = p.overlay, fg = p.subtle },
-						},
-						replace = {
-							a = { bg = p.overlay, fg = p.pine, gui = "bold" },
-							b = { bg = p.overlay, fg = p.text },
-							c = { bg = p.overlay, fg = p.subtle },
-						},
-						command = {
-							a = { bg = p.overlay, fg = p.love, gui = "bold" },
-							b = { bg = p.overlay, fg = p.text },
-							c = { bg = p.overlay, fg = p.subtle },
-						},
-						inactive = {
-							a = { bg = p.base, fg = p.subtle, gui = "bold" },
-							b = { bg = p.base, fg = p.subtle },
-							c = { bg = p.base, fg = p.subtle },
-						},
-					},
 					component_separators = " ",
 					section_separators = " ",
 					always_divide_middle = true,
 				},
 				sections = {
 					lualine_a = { "mode" },
-					lualine_b = { "filename" },
-					lualine_c = { "branch", "diff", "diagnostics" },
-					lualine_x = {},
+					lualine_b = {
+						"filename",
+					},
+					lualine_c = {
+						"branch",
+						{ "diagnostics", symbols = { error = "● ", warn = "● ", info = "● ", hint = "● " } },
+					},
+					lualine_x = {
+						"diff",
+					},
 					lualine_y = { "filetype" },
 					lualine_z = { "location" },
 				},

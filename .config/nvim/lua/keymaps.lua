@@ -54,6 +54,7 @@ local mappings = {
 	j = { "<c-w><c-w>", "next split" },
 	k = { vim.diagnostic.open_float, "show diagnostics" },
 	q = { ":q<cr>", "quit" },
+	r = { ":Telescope oldfiles<cr>", "reopen files" },
 	w = { ":w<cr>", "save" },
 	y = { "yank to clipboard" },
 	p = {

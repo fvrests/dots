@@ -18,6 +18,7 @@ vim.opt.completeopt = "menu,menuone,noselect"
 vim.opt.list = true
 vim.opt.listchars = { tab = "  ", trail = "·" }
 vim.opt.timeoutlen = 600
+vim.opt.cursorline = true
 
 vim.cmd("autocmd BufEnter * setlocal formatoptions-=o")
 vim.cmd("autocmd VimResized * tabdo wincmd =")
