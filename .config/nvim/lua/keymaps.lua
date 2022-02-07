@@ -3,8 +3,8 @@ vim.g.mapleader = " "
 vim.keymap.set("n", "<space>", "<nop>", { silent = true })
 
 -- natural j/k
-vim.keymap.set("n", "j", "gj", { silent = true })
-vim.keymap.set("n", "k", "gk", { silent = true })
+vim.keymap.set({ "n", "v" }, "j", "gj", { silent = true })
+vim.keymap.set({ "n", "v" }, "k", "gk", { silent = true })
 
 -- esc to hide matches
 vim.keymap.set("n", "<esc>", ":noh<cr>", { silent = true })
