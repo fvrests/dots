@@ -1,41 +1,41 @@
-local install_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+local install_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-	vim.fn.execute("!git clone --depth 1 https://github.com/wbthomason/packer.nvim " .. install_path)
+	vim.fn.execute('!git clone --depth 1 https://github.com/wbthomason/packer.nvim ' .. install_path)
 end
 
-require("packer").startup(function(use)
-	use("wbthomason/packer.nvim")
-	use("editorconfig/editorconfig-vim")
+require('packer').startup(function(use)
+	use('wbthomason/packer.nvim')
+	use('editorconfig/editorconfig-vim')
 	use({
-		"~/dev/rose-pine-neovim",
-		as = "rose-pine",
+		'~/dev/rose-pine-neovim',
+		as = 'rose-pine',
 		config = function()
 			-- local p = require("rose-pine.palette")
-			require("rose-pine").setup({
+			require('rose-pine').setup({
 				groups = {
-					border = "text",
+					border = 'text',
 				},
 			})
-			vim.cmd("colorscheme rose-pine")
+			vim.cmd('colorscheme rose-pine')
 		end,
 	})
 	use({
-		"folke/which-key.nvim",
+		'folke/which-key.nvim',
 		config = function()
-			require("which-key").setup({
+			require('which-key').setup({
 				presets = { operators = false },
 			})
-			require("keymaps")
+			require('keymaps')
 		end,
 	})
 	use({
-		"nvim-treesitter/nvim-treesitter",
-		run = ":TSUpdate",
-		requires = "windwp/nvim-ts-autotag",
+		'nvim-treesitter/nvim-treesitter',
+		run = ':TSUpdate',
+		requires = 'windwp/nvim-ts-autotag',
 		config = function()
-			require("nvim-treesitter.configs").setup({
-				ensure_installed = "maintained",
-				ignore_install = { "haskell" },
+			require('nvim-treesitter.configs').setup({
+				ensure_installed = 'maintained',
+				ignore_install = { 'haskell' },
 				indent = { enable = true },
 				autotag = { enable = true },
 				highlight = { enable = true },
@@ -43,95 +43,95 @@ require("packer").startup(function(use)
 		end,
 	})
 	use({
-		"windwp/nvim-autopairs",
+		'windwp/nvim-autopairs',
 		config = function()
-			require("nvim-autopairs").setup()
+			require('nvim-autopairs').setup()
 		end,
 	})
 	use({
-		"numToStr/Comment.nvim",
+		'numToStr/Comment.nvim',
 		config = function()
-			require("comment").setup({
+			require('comment').setup({
 				toggler = {
 					---Line-comment toggle keymap
-					line = ",,",
+					line = ',,',
 				},
 				opleader = {
 					---Line-comment keymap
-					line = ",",
+					line = ',',
 				},
 				extra = {
 					---Add comment on the line above
-					above = ",O",
+					above = ',O',
 					---Add comment on the line below
-					below = ",o",
+					below = ',o',
 					---Add comment at the end of line
-					eol = ",A",
+					eol = ',A',
 				},
 			})
 		end,
 	})
 	use({
-		"nvim-telescope/telescope.nvim",
-		requires = "nvim-lua/plenary.nvim",
+		'nvim-telescope/telescope.nvim',
+		requires = 'nvim-lua/plenary.nvim',
 		config = function()
-			require("telescope").setup({
+			require('telescope').setup({
 				defaults = { layout_config = { horizontal = { preview_width = 0.6 } } },
 				pickers = {
 					find_files = {
-						find_command = { "fd", "--type", "f", "--strip-cwd-prefix" },
-						theme = "dropdown",
+						find_command = { 'fd', '--type', 'f', '--strip-cwd-prefix' },
+						theme = 'dropdown',
 						previewer = false,
 					},
 					oldfiles = {
 						only_cwd = true,
-						find_command = { "fd", "--type", "f", "--strip-cwd-prefix" },
-						theme = "dropdown",
+						find_command = { 'fd', '--type', 'f', '--strip-cwd-prefix' },
+						theme = 'dropdown',
 						previewer = false,
-						initial_mode = "normal",
+						initial_mode = 'normal',
 					},
 				},
 			})
 		end,
 	})
 	use({
-		"kyazdani42/nvim-tree.lua",
+		'kyazdani42/nvim-tree.lua',
 		config = function()
 			vim.g.nvim_tree_icons = {
-				folder = { default = ">", empty = ">", empty_open = "▼", open = "▼" },
+				folder = { default = '>', empty = '>', empty_open = '▼', open = '▼' },
 			}
 			vim.g.nvim_tree_quit_on_open = 1
 			vim.g.nvim_tree_show_icons = { folders = 1, files = 0 }
-			require("nvim-tree").setup({
+			require('nvim-tree').setup({
 				auto_close = true,
-				filters = { custom = { ".git" } },
+				filters = { custom = { '.git' } },
 				git = { ignore = false },
-				view = { side = "right" },
+				view = { side = 'right' },
 			})
 		end,
 	})
 	use({
-		"neovim/nvim-lspconfig",
-		requires = "folke/lua-dev.nvim",
+		'neovim/nvim-lspconfig',
+		requires = 'folke/lua-dev.nvim',
 		config = function()
 			local function on_attach(client)
 				client.resolved_capabilities.document_formatting = false
 			end
 
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
-			capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+			capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
-			local lspconfig = require("lspconfig")
+			local lspconfig = require('lspconfig')
 
-			lspconfig.sumneko_lua.setup(require("lua-dev").setup({
+			lspconfig.sumneko_lua.setup(require('lua-dev').setup({
 				lspconfig = {
 					on_attach = on_attach,
 					capabilities = capabilities,
 				},
 			}))
-			local signs = { Error = "● ", Warn = "● ", Hint = "● ", Info = "● " }
+			local signs = { Error = '● ', Warn = '● ', Hint = '● ', Info = '● ' }
 			for type, icon in pairs(signs) do
-				local hl = "DiagnosticSign" .. type
+				local hl = 'DiagnosticSign' .. type
 				vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 			end
 			vim.diagnostic.config({
@@ -139,13 +139,13 @@ require("packer").startup(function(use)
 			})
 
 			local servers = {
-				"html",
-				"jsonls",
-				"cssls",
-				"tailwindcss",
-				"tsserver",
-				"volar",
-				"svelte",
+				'html',
+				'jsonls',
+				'cssls',
+				'tailwindcss',
+				'tsserver',
+				'volar',
+				'svelte',
 			}
 			for _, server in ipairs(servers) do
 				lspconfig[server].setup({ on_attach = on_attach, capabilities = capabilities })
@@ -153,17 +153,17 @@ require("packer").startup(function(use)
 		end,
 	})
 	use({
-		"jose-elias-alvarez/null-ls.nvim",
-		requires = { "nvim-lua/plenary.nvim" },
+		'jose-elias-alvarez/null-ls.nvim',
+		requires = { 'nvim-lua/plenary.nvim' },
 		config = function()
-			local null_ls = require("null-ls")
+			local null_ls = require('null-ls')
 			local formatting = null_ls.builtins.formatting
 
 			null_ls.setup({
 				sources = {
 					formatting.fish_indent,
-					formatting.prettierd.with({ extra_filetypes = { "svelte", "jsonc" } }),
-					formatting.shfmt.with({ extra_filetypes = { "bash", "sh", "zsh" } }),
+					formatting.prettierd.with({ extra_filetypes = { 'svelte', 'jsonc' } }),
+					formatting.shfmt.with({ extra_filetypes = { 'bash', 'sh', 'zsh' } }),
 					formatting.stylua,
 				},
 				on_attach = function(client)
@@ -175,31 +175,31 @@ require("packer").startup(function(use)
 		end,
 	})
 	use({
-		"hrsh7th/nvim-cmp",
-		requires = { "L3MON4D3/LuaSnip", "hrsh7th/cmp-nvim-lsp", "windwp/nvim-autopairs" },
+		'hrsh7th/nvim-cmp',
+		requires = { 'L3MON4D3/LuaSnip', 'hrsh7th/cmp-nvim-lsp', 'windwp/nvim-autopairs' },
 		config = function()
-			local cmp = require("cmp")
-			cmp.event:on("confirm_done", require("nvim-autopairs.completion.cmp").on_confirm_done())
+			local cmp = require('cmp')
+			cmp.event:on('confirm_done', require('nvim-autopairs.completion.cmp').on_confirm_done())
 			cmp.setup({
 				snippet = {
 					expand = function(args)
-						require("luasnip").lsp_expand(args.body)
+						require('luasnip').lsp_expand(args.body)
 					end,
 				},
 				mapping = {
-					["<c-space>"] = cmp.mapping.complete(),
-					["<cr>"] = cmp.mapping.confirm({
+					['<c-space>'] = cmp.mapping.complete(),
+					['<cr>'] = cmp.mapping.confirm({
 						behavior = cmp.ConfirmBehavior.Replace,
 						select = false,
 					}),
-					["<tab>"] = function(fallback)
+					['<tab>'] = function(fallback)
 						if cmp.visible() then
 							cmp.select_next_item()
 						else
 							fallback()
 						end
 					end,
-					["<s-tab>"] = function(fallback)
+					['<s-tab>'] = function(fallback)
 						if cmp.visible() then
 							cmp.select_prev_item()
 						else
@@ -207,44 +207,79 @@ require("packer").startup(function(use)
 						end
 					end,
 				},
-				sources = { { name = "nvim_lsp" } },
+				sources = { { name = 'nvim_lsp' } },
 			})
 		end,
 	})
 	use({
-		"nvim-lualine/lualine.nvim",
+		'nvim-lualine/lualine.nvim',
+		-- Load after colorscheme is set
+		event = 'ColorScheme',
 		config = function()
+			local p = require('rose-pine.palette')
 			vim.opt.showmode = false
-			require("lualine").setup({
+			local filename = {
+				'filename',
+				symbols = {
+					modified = '   ',
+					readonly = ' ',
+					unnamed = '',
+				},
+			}
+			require('lualine').setup({
 				options = {
-					theme = "rose-pine-inverse",
+					theme = 'rose-pine-inverse',
 					icons_enabled = false,
-					component_separators = " ",
-					section_separators = " ",
+					component_separators = ' ',
+					section_separators = ' ',
 					always_divide_middle = true,
 				},
 				sections = {
-					lualine_a = { "mode" },
-					lualine_b = {
-						"filename",
-					},
+					lualine_a = { 'mode' },
+					lualine_b = { filename },
 					lualine_c = {
-						"branch",
-						{ "diagnostics", symbols = { error = "● ", warn = "● ", info = "● ", hint = "● " } },
+						{
+							'branch',
+							fmt = function(branch)
+								if branch == '' then
+									return
+								end
+								return '(' .. branch .. ')'
+							end,
+							color = { fg = p.gold, gui = 'italic' },
+						},
+						{
+							'diagnostics',
+							symbols = { error = '● ', warn = '● ', info = '● ', hint = '● ' },
+						},
 					},
 					lualine_x = {
-						"diff",
+						'diff',
 					},
-					lualine_y = { "filetype" },
-					lualine_z = { "location" },
+					lualine_y = { 'filetype' },
+					lualine_z = { 'location' },
 				},
 				inactive_sections = {
 					lualine_a = {},
-					lualine_b = { "filename" },
+					lualine_b = { filename },
 					lualine_c = {},
-					lualine_x = { "location" },
+					lualine_x = { 'location' },
 					lualine_y = {},
 					lualine_z = {},
+				},
+			})
+		end,
+	})
+	use({
+		'windwp/nvim-spectre',
+		config = function()
+			require('spectre').setup({
+				mapping = {
+					['send_to_qf'] = {
+						map = 'q',
+						cmd = "<cmd>lua require('spectre.actions').send_to_qf()<CR>",
+						desc = 'send all item to quickfix',
+					},
 				},
 			})
 		end,
