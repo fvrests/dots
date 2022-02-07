@@ -28,7 +28,7 @@ vim.keymap.set("n", "&", "*Ncgn", { silent = true })
 vim.keymap.set("v", "&", [[y/\V<c-r>=escape(@",'/\')<cr><cr>Ncgn]], { silent = true })
 
 -- yank to clipboard
-vim.keymap.set({ "n", "v" }, "<leader>y", '"*y', { silent = true })
+vim.keymap.set({ "n", "v" }, "<leader>y", '"*y')
 
 -- info:
 -- hover
