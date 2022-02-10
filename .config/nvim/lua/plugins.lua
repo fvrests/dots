@@ -7,8 +7,9 @@ require('packer').startup(function(use)
 	use('wbthomason/packer.nvim')
 	use('editorconfig/editorconfig-vim')
 	use({
-		'~/dev/rose-pine-neovim',
+		'rose-pine/neovim',
 		as = 'rose-pine',
+		branch = 'canary',
 		config = function()
 			-- local p = require("rose-pine.palette")
 			require('rose-pine').setup({
@@ -228,7 +229,7 @@ require('packer').startup(function(use)
 			}
 			require('lualine').setup({
 				options = {
-					theme = 'rose-pine-inverse',
+					theme = 'auto',
 					icons_enabled = false,
 					component_separators = ' ',
 					section_separators = ' ',
