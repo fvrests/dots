@@ -20,7 +20,7 @@ abbr --add p pnpm
 abbr --add n nvim
 abbr --add px pnpx
 abbr --add .git "git --git-dir=$HOME/dots.git --work-tree=$HOME"
-abbr --add .list "git --git-dir=$HOME/dots.git --work-tree=$HOME ls-files --other $HOME/.config/*"
+abbr --add .list "git --git-dir=$HOME/dots.git --work-tree=$HOME ls-files --other --no-empty-directory --exclude-standard $HOME/.config/*"
 abbr --add .lg "lazygit --git-dir=$HOME/dots.git --work-tree=$HOME"
 abbr --add ,kitty "$EDITOR ~/.config/kitty/kitty.conf +'lcd %:p:h'"
 abbr --add ,nvim "$EDITOR ~/.config/nvim/init.lua +'lcd %:p:h'"
