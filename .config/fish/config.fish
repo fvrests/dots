@@ -26,5 +26,6 @@ abbr --add ,kitty "$EDITOR ~/.config/kitty/kitty.conf +'lcd %:p:h'"
 abbr --add ,nvim "$EDITOR ~/.config/nvim/init.lua +'lcd %:p:h'"
 abbr --add ,fish "$EDITOR ~/.config/fish/config.fish +'lcd %:p:h'"
 abbr --add ,helix "$EDITOR ~/.config/helix/config.toml +'lcd %:p:h'"
+abbr --add ,lg "$EDITOR ~/.config/lazygit/config.yml +'lcd %:p:h'"
 
 bind \e\[108\;9u toggle-theme # `super+l`
