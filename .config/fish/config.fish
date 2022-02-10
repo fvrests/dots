@@ -1,4 +1,4 @@
-set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
+set -q XDG_CONFIG_HOME; or set -xg XDG_CONFIG_HOME $HOME/.config
 
 set -gx EDITOR nvim
 set -gx LS_COLORS true
