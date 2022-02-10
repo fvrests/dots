@@ -5,7 +5,16 @@ function toggle-theme -d "toggle kitty theme (which will indirectly update fish)
     set new_theme "rose-pine.conf"
 
     if [ "$current_theme" = "rose-pine.conf" ]
+        set new_theme 'rose-pine-moon.conf'
+        sed -i '' -e "s/#ebbcba/#ea9a97/" "$HOME/.config/lazygit/config.yml"
+    else if [ "$current_theme" = "rose-pine-moon.conf" ]
         set new_theme "rose-pine-dawn.conf"
+        sed -i '' -e "s/#ea9a97/#d7827e/" "$HOME/.config/lazygit/config.yml"
+        sed -i '' -e "s/#c4a7e7/#907aa9/" "$HOME/.config/lazygit/config.yml"
+    else
+        set new_theme "rose-pine.conf"
+        sed -i '' -e "s/#d7827e/#ebbcba/" "$HOME/.config/lazygit/config.yml"
+        sed -i '' -e "s/#907aa9/#c4a7e7/" "$HOME/.config/lazygit/config.yml"
     end
 
     # Set theme for active sessions. Requires `allow_remote_control yes`

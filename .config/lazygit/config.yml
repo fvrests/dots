@@ -4,6 +4,6 @@ gui:
     selectedRangeBgColor:
       - reverse
   authorColors:
-    "fvrests": "#ebbcba"
-    "leaf": "#ebbcba"
+    "fvrests": "#d7827e"
+    "leaf": "#d7827e"
     "*": "#c4a7e7"
