@@ -1,0 +1,9 @@
+gui:
+  showCommandLog: false
+  theme:
+    selectedRangeBgColor:
+      - reverse
+  authorColors:
+    "fvrests": "#ebbcba"
+    "leaf": "#ebbcba"
+    "*": "#c4a7e7"
