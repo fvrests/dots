@@ -1,27 +1,40 @@
-function toggle-theme -d "toggle kitty theme (which will indirectly update fish)"
-    use-terminal-colors
+# Set theme for macOS system, kitty terminal, and fish shell
+#
+# @requires
+# kitty (https://github.com/kovidgoyal/kitty)
+# dark-mode (https://github.com/sindresorhus/dark-mode-cli)
+#
+# @usage
+# toggle-theme
+# toggle-theme [system|light|dark]
+function toggle-theme -a mode
+    set dark_theme rose-pine
+    set light_theme rose-pine-dawn
+    set -q THEME; or use-terminal-colors
+    set -q THEME; or set -U THEME $dark_theme
 
-    set current_theme (awk '$1=="include" {print $2}' "$HOME/.config/kitty/kitty.conf")
-    set new_theme "rose-pine.conf"
-
-    if [ "$current_theme" = "rose-pine.conf" ]
-        set new_theme 'rose-pine-moon.conf'
-        sed -i '' -e "s/#ebbcba/#ea9a97/" "$HOME/.config/lazygit/config.yml"
-    else if [ "$current_theme" = "rose-pine-moon.conf" ]
-        set new_theme "rose-pine-dawn.conf"
-        sed -i '' -e "s/#ea9a97/#d7827e/" "$HOME/.config/lazygit/config.yml"
-        sed -i '' -e "s/#c4a7e7/#907aa9/" "$HOME/.config/lazygit/config.yml"
+    if [ "$mode" = light ]
+        set -u THEME $light_theme
+    else if [ "$mode" = dark ]
+        set -u THEME $dark_theme
+    else if [ "$THEME" = $dark_theme ]
+        set -u THEME $light_theme
     else
-        set new_theme "rose-pine.conf"
-        sed -i '' -e "s/#d7827e/#ebbcba/" "$HOME/.config/lazygit/config.yml"
-        sed -i '' -e "s/#907aa9/#c4a7e7/" "$HOME/.config/lazygit/config.yml"
+        set -u THEME $dark_theme
     end
 
-    # Set theme for active sessions. Requires `allow_remote_control yes`
-    kitty @ set-colors --all --configured "~/.config/kitty/$new_theme"
+    if type -q kitty
+        # Manually change kitty theme to local variant
+        # Requires `allow_remote_control yes` in your kitty.conf
+        kitty @ set-colors --all --configured "~/.config/kitty/themes/$THEME.conf"
+        sed -i "" -e \
+            "s/include themes\/.*\.conf/include themes\/$THEME.conf/" \
+            "$HOME/.config/kitty/kitty.conf"
 
-    # Update config for persistence
-    sed -i '' -e "s/include.*/include $new_theme/" "$HOME/.config/kitty/kitty.conf"
+        # Use kitten to set theme
+        # Syntax may differ, eg. rose-pine becomes Rosé Pine
+        # kitty +kitten themes --reload-in=all "$THEME"
+    end
 end
 
 function use-terminal-colors
