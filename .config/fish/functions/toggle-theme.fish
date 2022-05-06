@@ -23,6 +23,28 @@ function toggle-theme -a mode
         set -u THEME $dark_theme
     end
 
+    if [ "$THEME" = "$dark_theme" ]
+        sed -i "" -e \
+            "s/    \"fvrests\": \"#d7827e\"/    \"fvrests\": \"#ebbcba\"/" \
+            "$HOME/.config/lazygit/config.yml"
+        sed -i "" -e \
+            "s/    \"leaf\": \"#d7827e\"/    \"leaf\": \"#ebbcba\"/" \
+            "$HOME/.config/lazygit/config.yml"
+        sed -i "" -e \
+            "s/    \"\*\": \"#907aa9\"/    \"*\": \"#c4a7e7\"/" \
+            "$HOME/.config/lazygit/config.yml"
+    else
+        sed -i "" -e \
+            "s/    \"fvrests\": \"#ebbcba\"/    \"fvrests\": \"#d7827e\"/" \
+            "$HOME/.config/lazygit/config.yml"
+        sed -i "" -e \
+            "s/    \"leaf\": \"#ebbcba\"/    \"leaf\": \"#d7827e\"/" \
+            "$HOME/.config/lazygit/config.yml"
+        sed -i "" -e \
+            "s/    \"\*\": \"#c4a7e7\"/    \"*\": \"#907aa9\"/" \
+            "$HOME/.config/lazygit/config.yml"
+    end
+
     if type -q kitty
         # Manually change kitty theme to local variant
         # Requires `allow_remote_control yes` in your kitty.conf
