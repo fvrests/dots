@@ -1,3 +1,4 @@
+vim.opt.title = true
 vim.opt.mouse = 'a'
 vim.opt.breakindent = true
 vim.opt.shortmess:append('c')
@@ -19,6 +20,8 @@ vim.opt.list = true
 vim.opt.listchars = { tab = '  ', trail = '·' }
 vim.opt.timeoutlen = 600
 vim.opt.cursorline = true
+vim.opt.list = false
+vim.opt.listchars = { tab = '┊ ', space = '·', trail = '·' }
 
 vim.cmd('autocmd BufEnter * setlocal formatoptions-=o')
 vim.cmd('autocmd VimResized * tabdo wincmd =')

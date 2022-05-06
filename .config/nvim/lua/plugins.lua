@@ -3,18 +3,34 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 	vim.fn.execute('!git clone --depth 1 https://github.com/wbthomason/packer.nvim ' .. install_path)
 end
 
+vim.cmd([[
+   augroup Packer
+     autocmd!
+     autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+   augroup end
+ ]])
+
 require('packer').startup(function(use)
 	use('wbthomason/packer.nvim')
 	use('editorconfig/editorconfig-vim')
 	use({
+		'mvllow/modes.nvim',
+		config = function()
+			require('modes').setup()
+		end,
+	})
+	use({
 		'rose-pine/neovim',
 		as = 'rose-pine',
-		branch = 'canary',
 		config = function()
-			-- local p = require("rose-pine.palette")
 			require('rose-pine').setup({
-				groups = {
-					border = 'text',
+				highlight_groups = {
+					TelescopeBorder = {
+						fg = 'text',
+					},
+					NvimTreeFolderIcon = {
+						fg = 'gold',
+					},
 				},
 			})
 			vim.cmd('colorscheme rose-pine')
@@ -24,7 +40,9 @@ require('packer').startup(function(use)
 		'folke/which-key.nvim',
 		config = function()
 			require('which-key').setup({
-				presets = { operators = false },
+				plugins = {
+					presets = { operators = false },
+				},
 			})
 			require('keymaps')
 		end,
@@ -35,8 +53,9 @@ require('packer').startup(function(use)
 		requires = 'windwp/nvim-ts-autotag',
 		config = function()
 			require('nvim-treesitter.configs').setup({
-				ensure_installed = 'maintained',
-				ignore_install = { 'haskell' },
+				ensure_installed = 'all',
+				--- phpdoc fails installing on m1
+				ignore_install = { 'phpdoc' },
 				indent = { enable = true },
 				autotag = { enable = true },
 				highlight = { enable = true },
@@ -99,15 +118,26 @@ require('packer').startup(function(use)
 		'kyazdani42/nvim-tree.lua',
 		config = function()
 			vim.g.nvim_tree_icons = {
-				folder = { default = '>', empty = '>', empty_open = '▼', open = '▼' },
+				folder = { default = '●', empty = '◌', empty_open = '○', open = '○' },
 			}
-			vim.g.nvim_tree_quit_on_open = 1
 			vim.g.nvim_tree_show_icons = { folders = 1, files = 0 }
 			require('nvim-tree').setup({
-				auto_close = true,
+				actions = {
+					open_file = {
+						quit_on_open = true,
+					},
+				},
 				filters = { custom = { '.git' } },
 				git = { ignore = false },
-				view = { side = 'right' },
+				view = {
+					mappings = {
+						list = {
+							{ key = 'd', action = 'trash' },
+							{ key = 'D', action = 'remove' },
+						},
+					},
+					side = 'right',
+				},
 			})
 		end,
 	})
