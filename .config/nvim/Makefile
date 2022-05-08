@@ -1,19 +1,21 @@
 SHELL := /bin/sh
 
-all:
-	brew upgrade neovim --fetch-head
-	npm i -g typescript typescript-language-server vscode-langservers-extracted @tailwindcss/language-server svelte-language-server @volar/server
-	brew install shfmt stylua
-	npm i -g @fsouza/prettierd
-	brew install lua-language-server
+BREW_PACKAGES = lua-language-server \
+					 stylua
+NPM_PACKAGES = @fsouza/prettierd \
+					typescript-language-server \
+					vscode-langservers-extracted \
+					@tailwindcss/language-server \
+					svelte-language-server \
+					@volar/vue-language-server
 
-neovim:
-	brew upgrade neovim --fetch-head
+.PHONY: install
+install:
+	brew upgrade
+	brew install $(BREW_PACKAGES)
+	npm install --global --latest $(NPM_PACKAGES)
 
-servers: 
-	npm i -g typescript typescript-language-server vscode-langservers-extracted @tailwindcss/language-server svelte-language-server @volar/server 
-	brew install lua-language-server
-
-formatters:
-	brew install shfmt stylua
-	npm i -g @fsouza/prettierd
+.PHONY: uninstall
+uninstall:
+	brew uninstall $(BREW_PACKAGES)
+	npm uninstall --global $(NPM_PACKAGES)
