@@ -7,3 +7,6 @@ gui:
     "fvrests": "#ebbcba"
     "leaf": "#ebbcba"
     "*": "#c4a7e7"
+git:
+  paging:
+    pager: delta --diff-highlight --minus-emph-style="reverse red" --minus-empty-line-marker-style="reverse red" --plus-emph-style="reverse green" --plus-empty-line-marker-style="reverse green" --hunk-header-style="line-number" --hunk-header-line-number-style="magenta" --file-style="yellow" --paging=never
