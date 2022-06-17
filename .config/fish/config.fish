@@ -10,6 +10,11 @@ fish_add_path $HOME/.cargo/bin
 
 if status is-interactive
     set fish_greeting '🐟'
+
+    function fish_title
+        echo '🐟'
+    end
+
     function fish_prompt
         set -g fish_prompt_pwd_dir_length 0
         printf '%s%s> ' (prompt_pwd) (set_color yellow; fish_git_prompt; set_color normal)
