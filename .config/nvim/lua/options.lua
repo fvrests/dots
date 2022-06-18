@@ -1,4 +1,4 @@
-vim.opt.title = true
+-- vim.opt.title = true
 vim.opt.mouse = 'a'
 vim.opt.breakindent = true
 vim.opt.shortmess:append('c')
@@ -18,7 +18,7 @@ vim.opt.wrap = true
 vim.opt.completeopt = 'menu,menuone,noselect'
 vim.opt.list = true
 vim.opt.listchars = { tab = '  ', trail = '·' }
-vim.opt.timeoutlen = 600
+vim.opt.timeoutlen = 1500
 vim.opt.cursorline = true
 vim.opt.list = false
 vim.opt.listchars = { tab = '┊ ', space = '·', trail = '·' }
