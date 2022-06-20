@@ -129,6 +129,9 @@ require('packer').startup(function(use)
 				},
 				filters = { custom = { '.git' } },
 				git = { ignore = false },
+				trash = {
+					cmd = 'trash',
+				},
 				view = {
 					mappings = {
 						list = {
