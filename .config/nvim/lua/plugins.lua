@@ -56,16 +56,9 @@ require('packer').startup(function(use)
 				ensure_installed = 'all',
 				--- phpdoc fails installing on m1
 				ignore_install = { 'phpdoc' },
-				indent = { enable = true },
 				autotag = { enable = true },
 				highlight = { enable = true },
 			})
-		end,
-	})
-	use({
-		'windwp/nvim-autopairs',
-		config = function()
-			require('nvim-autopairs').setup()
 		end,
 	})
 	use({
@@ -207,10 +200,9 @@ require('packer').startup(function(use)
 	})
 	use({
 		'hrsh7th/nvim-cmp',
-		requires = { 'L3MON4D3/LuaSnip', 'hrsh7th/cmp-nvim-lsp', 'windwp/nvim-autopairs' },
+		requires = { 'L3MON4D3/LuaSnip', 'hrsh7th/cmp-nvim-lsp' },
 		config = function()
 			local cmp = require('cmp')
-			cmp.event:on('confirm_done', require('nvim-autopairs.completion.cmp').on_confirm_done())
 			cmp.setup({
 				snippet = {
 					expand = function(args)
@@ -244,8 +236,6 @@ require('packer').startup(function(use)
 	})
 	use({
 		'nvim-lualine/lualine.nvim',
-		-- Load after colorscheme is set
-		event = 'ColorScheme',
 		config = function()
 			local p = require('rose-pine.palette')
 			vim.opt.showmode = false
