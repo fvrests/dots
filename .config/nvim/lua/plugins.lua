@@ -92,13 +92,13 @@ require('packer').startup(function(use)
 				defaults = { layout_config = { horizontal = { preview_width = 0.6 } } },
 				pickers = {
 					find_files = {
-						find_command = { 'fd', '--type', 'f', '--strip-cwd-prefix' },
+						find_command = { 'fd', '-t', 'f', '-H', '-E', '.git', '--strip-cwd-prefix' },
 						theme = 'dropdown',
 						previewer = false,
 					},
 					oldfiles = {
 						only_cwd = true,
-						find_command = { 'fd', '--type', 'f', '--strip-cwd-prefix' },
+						find_command = { 'fd', '-t', 'f', '-H', '-E', '.git', '--strip-cwd-prefix' },
 						theme = 'dropdown',
 						previewer = false,
 						initial_mode = 'normal',
@@ -110,10 +110,6 @@ require('packer').startup(function(use)
 	use({
 		'kyazdani42/nvim-tree.lua',
 		config = function()
-			vim.g.nvim_tree_icons = {
-				folder = { default = '●', empty = '◌', empty_open = '○', open = '○' },
-			}
-			vim.g.nvim_tree_show_icons = { folders = 1, files = 0 }
 			require('nvim-tree').setup({
 				actions = {
 					open_file = {
@@ -122,6 +118,19 @@ require('packer').startup(function(use)
 				},
 				filters = { custom = { '.git' } },
 				git = { ignore = false },
+				renderer = {
+					icons = {
+						show = { folder = true, folder_arrow = false, file = false },
+						glyphs = {
+							folder = {
+								default = '●',
+								empty = '◌',
+								empty_open = '○',
+								open = '○',
+							},
+						},
+					},
+				},
 				view = {
 					mappings = {
 						list = {
@@ -249,7 +258,7 @@ require('packer').startup(function(use)
 			}
 			require('lualine').setup({
 				options = {
-					theme = 'auto',
+					theme = 'rose-pine-alt',
 					icons_enabled = false,
 					component_separators = ' ',
 					section_separators = ' ',
