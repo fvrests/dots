@@ -25,6 +25,7 @@ require('packer').startup(function(use)
 		config = function()
 			require('rose-pine').setup({
 				highlight_groups = {
+					NvimTreeFolderName = { fg = 'text' },
 					TelescopeBorder = {
 						fg = 'text',
 					},
@@ -117,19 +118,23 @@ require('packer').startup(function(use)
 					},
 				},
 				filters = { custom = { '.git' } },
-				git = { ignore = false },
+				git = { enable = true, ignore = false },
 				renderer = {
+					highlight_git = true,
 					icons = {
-						show = { folder = true, folder_arrow = false, file = false },
+						show = { folder = true, folder_arrow = false, file = false, git = false },
 						glyphs = {
 							folder = {
 								default = '●',
-								empty = '◌',
-								empty_open = '○',
-								open = '○',
+								open = '◌',
+								empty = '━',
+								empty_open = '═',
 							},
 						},
 					},
+				},
+				trash = {
+					cmd = 'trash',
 				},
 				view = {
 					mappings = {
