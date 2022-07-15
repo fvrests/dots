@@ -14,12 +14,6 @@ require('packer').startup(function(use)
 	use('wbthomason/packer.nvim')
 	use('editorconfig/editorconfig-vim')
 	use({
-		'mvllow/modes.nvim',
-		config = function()
-			require('modes').setup()
-		end,
-	})
-	use({
 		'rose-pine/neovim',
 		as = 'rose-pine',
 		config = function()
@@ -117,7 +111,7 @@ require('packer').startup(function(use)
 						quit_on_open = true,
 					},
 				},
-				filters = { custom = { '.git' } },
+				filters = { custom = { '^.git$' } },
 				git = { enable = true, ignore = false },
 				renderer = {
 					highlight_git = true,
