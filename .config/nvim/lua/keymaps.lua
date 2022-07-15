@@ -38,6 +38,8 @@ vim.keymap.set('i', '<c-k>', vim.lsp.buf.signature_help, { silent = true })
 
 -- go to:
 -- definition
+vim.keymap.set('n', 'go', '<c-o>', { silent = true })
+vim.keymap.set('n', 'gO', '<c-i>', { silent = true })
 vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { silent = true })
 -- references
 vim.keymap.set('n', 'gr', vim.lsp.buf.references, { silent = true })
