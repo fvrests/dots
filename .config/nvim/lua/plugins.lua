@@ -321,4 +321,31 @@ require('packer').startup(function(use)
 			})
 		end,
 	})
+	use({
+		'folke/todo-comments.nvim',
+		requires = 'nvim-lua/plenary.nvim',
+		config = function()
+			require('todo-comments').setup({
+				signs = false,
+				keywords = {
+					-- TODO:
+					TODO = { color = 'default', alt = { 'todo' } },
+					-- NOTE:
+					NOTE = { color = 'warning', alt = { 'note' } },
+					-- FIX:
+					FIX = { color = 'hint', alt = { 'fix' } },
+					-- TEMP:
+					TEMP = { color = 'info', alt = { 'temp' } },
+				},
+				gui_style = {
+					fg = 'BOLD',
+				},
+				highlight = {
+					before = 'fg',
+					keyword = 'wide_fg',
+					after = 'fg',
+				},
+			})
+		end,
+	})
 end)
