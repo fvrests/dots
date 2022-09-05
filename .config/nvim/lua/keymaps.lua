@@ -1,3 +1,5 @@
+-- vim.keymap.set(mode, new keymap, default keymap, options)
+
 -- set leader
 vim.g.mapleader = ' '
 vim.keymap.set('n', '<space>', '<nop>', { silent = true })
@@ -16,8 +18,8 @@ vim.keymap.set('v', '<c-j>', ":m '>+1<cr>gv=gv", { silent = true })
 vim.keymap.set('v', '<c-k>', ":m '<-2<cr>gv=gv", { silent = true })
 
 -- indent
-vim.keymap.set('v', '<', '<gv', { silent = true })
-vim.keymap.set('v', '>', '>gv', { silent = true })
+vim.keymap.set('v', '<c-h>', '<gv', { silent = true })
+vim.keymap.set('v', '<c-l>', '>gv', { silent = true })
 
 -- find:
 -- just find matches
@@ -38,9 +40,11 @@ vim.keymap.set('i', '<c-k>', vim.lsp.buf.signature_help, { silent = true })
 
 -- go to:
 -- definition
-vim.keymap.set('n', 'go', '<c-o>', { silent = true })
-vim.keymap.set('n', 'gO', '<c-i>', { silent = true })
 vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { silent = true })
+-- previous position
+vim.keymap.set('n', 'go', '<c-o>', { silent = true })
+-- next position
+vim.keymap.set('n', 'gO', '<c-i>', { silent = true })
 -- references
 vim.keymap.set('n', 'gr', vim.lsp.buf.references, { silent = true })
 -- diagnostic
@@ -83,6 +87,8 @@ local mappings = {
 
 local g = {
 	d = { 'definition' },
+	o = { 'previous position' },
+	O = { 'next position' },
 	r = { 'references' },
 	['['] = { 'previous diagnostic' },
 	[']'] = { 'next diagnostic' },
