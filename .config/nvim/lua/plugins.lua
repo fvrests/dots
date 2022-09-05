@@ -58,6 +58,7 @@ require('packer').startup(function(use)
 	})
 	use({
 		'numToStr/Comment.nvim',
+		requires = 'JoosepAlviste/nvim-ts-context-commentstring',
 		config = function()
 			require('comment').setup({
 				toggler = {
@@ -75,6 +76,13 @@ require('packer').startup(function(use)
 					below = ',o',
 					---Add comment at the end of line
 					eol = ',A',
+				},
+				pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
+			})
+			require('nvim-treesitter.configs').setup({
+				context_commentstring = {
+					enable = true,
+					enable_autocmd = false,
 				},
 			})
 		end,
@@ -194,7 +202,7 @@ require('packer').startup(function(use)
 			null_ls.setup({
 				sources = {
 					formatting.fish_indent,
-					formatting.prettierd.with({ extra_filetypes = { 'svelte', 'jsonc' } }),
+					formatting.prettierd.with({ extra_filetypes = { 'svelte', 'jsonc', 'astro' } }),
 					formatting.shfmt.with({ extra_filetypes = { 'bash', 'sh', 'zsh' } }),
 					formatting.stylua,
 				},
