@@ -5,12 +5,13 @@
 
   // theme
   "workbench.colorTheme": "Rosé Pine",
-  "workbench.iconTheme": "rose-pine-icons",
+  "workbench.iconTheme": "symbols",
+  "workbench.productIconTheme": "fluent-icons",
 
   // font
   "editor.fontFamily": "'Cartograph CF', 'SF Mono', 'SFMono-Regular', Menlo, Monaco, 'Courier New', monospace",
   "editor.fontLigatures": false,
-  "editor.fontWeight": "700",
+  "editor.fontWeight": "600",
   "editor.fontSize": 13,
   "terminal.integrated.fontWeight": "600",
   "terminal.integrated.fontSize": 12,
@@ -33,9 +34,6 @@
   "zenMode.fullScreen": false,
   "zenMode.restore": true,
   "zenMode.hideTabs": false,
-
-  // turn off / hide unwanted features
-  "breadcrumbs.enabled": false,
   "editor.folding": false,
   "editor.hideCursorInOverviewRuler": true,
   "editor.minimap.enabled": false,
@@ -46,6 +44,7 @@
   "editor.bracketPairColorization.enabled": false,
   "editor.occurrencesHighlight": false,
   "editor.lightbulb.enabled": false,
+  "editor.lineNumbers": "on",
   "workbench.editor.enablePreview": false,
   "workbench.editor.enablePreviewFromQuickOpen": false,
   // hide indent guides
@@ -102,11 +101,12 @@
   "vim.vimrc.enable": true,
   "workbench.startupEditor": "none",
   "window.openWithoutArgumentsInNewWindow": "on",
-  "workbench.sideBar.location": "left",
+  "workbench.sideBar.location": "right",
 
   // limit open editors
-  "workbench.editor.limit.enabled": true,
-  "workbench.editor.limit.value": 4,
+  "workbench.editor.limit.enabled": false,
+  "workbench.editor.limit.value": 3,
+  "workbench.editor.limit.excludeDirty": true,
 
   // formatting
   "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -206,5 +206,9 @@
       "borderRadius": "6px",
       "isWholeLine": true
     }
-  ]
+  ],
+  "[astro]": {
+    "editor.defaultFormatter": "astro-build.astro-vscode"
+  },
+  "workbench.editor.showTabs": false
 }

@@ -152,23 +152,24 @@ require('packer').startup(function(use)
 	})
 	use({
 		'neovim/nvim-lspconfig',
-		requires = 'folke/lua-dev.nvim',
+		requires = {
+			'folke/lua-dev.nvim',
+			'williamboman/mason.nvim',
+			'williamboman/mason-lspconfig.nvim',
+			'WhoIsSethDaniel/mason-tool-installer.nvim',
+		},
 		config = function()
-			local function on_attach(client)
-				client.resolved_capabilities.document_formatting = false
-			end
+			require('mason').setup()
+			require('mason-tool-installer').setup({})
 
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
-			capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
-			local lspconfig = require('lspconfig')
+			-- Improve compatibility with nvim-cmp completions
+			local has_cmp_nvim_lsp, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
+			if has_cmp_nvim_lsp then
+				capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+			end
 
-			lspconfig.sumneko_lua.setup(require('lua-dev').setup({
-				lspconfig = {
-					on_attach = on_attach,
-					capabilities = capabilities,
-				},
-			}))
 			local signs = { Error = '● ', Warn = '● ', Hint = '● ', Info = '● ' }
 			for type, icon in pairs(signs) do
 				local hl = 'DiagnosticSign' .. type
@@ -178,20 +179,66 @@ require('packer').startup(function(use)
 				virtual_text = false,
 			})
 
-			local servers = {
-				'html',
-				'jsonls',
-				'cssls',
-				'tailwindcss',
-				'tsserver',
-				'volar',
-				'svelte',
-			}
-			for _, server in ipairs(servers) do
-				lspconfig[server].setup({ on_attach = on_attach, capabilities = capabilities })
-			end
+			-- Automatically setup servers installed via `:MasonInstall`
+			require('mason-lspconfig').setup_handlers({
+				function(server_name)
+					if server_name == 'sumneko_lua' then
+						require('lspconfig')[server_name].setup(require('lua-dev').setup({
+							on_attach = on_attach,
+							capabilities = capabilities,
+						}))
+					else
+						require('lspconfig')[server_name].setup({
+							on_attach = on_attach,
+							capabilities = capabilities,
+						})
+					end
+				end,
+			})
 		end,
 	})
+	-- use({
+	-- 	'neovim/nvim-lspconfig',
+	-- 	requires = 'folke/lua-dev.nvim',
+	-- 	config = function()
+	-- 		local function on_attach(client)
+	-- 			client.resolved_capabilities.document_formatting = false
+	-- 		end
+	--
+	-- 		local capabilities = vim.lsp.protocol.make_client_capabilities()
+	-- 		capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+	--
+	-- 		local lspconfig = require('lspconfig')
+	--
+	-- 		lspconfig.sumneko_lua.setup(require('lua-dev').setup({
+	-- 			lspconfig = {
+	-- 				on_attach = on_attach,
+	-- 				capabilities = capabilities,
+	-- 			},
+	-- 		}))
+	-- 		local signs = { Error = '● ', Warn = '● ', Hint = '● ', Info = '● ' }
+	-- 		for type, icon in pairs(signs) do
+	-- 			local hl = 'DiagnosticSign' .. type
+	-- 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+	-- 		end
+	-- 		vim.diagnostic.config({
+	-- 			virtual_text = false,
+	-- 		})
+	--
+	-- 		local servers = {
+	-- 			'html',
+	-- 			'jsonls',
+	-- 			'cssls',
+	-- 			'tailwindcss',
+	-- 			'tsserver',
+	-- 			'volar',
+	-- 			'svelte',
+	-- 		}
+	-- 		for _, server in ipairs(servers) do
+	-- 			lspconfig[server].setup({ on_attach = on_attach, capabilities = capabilities })
+	-- 		end
+	-- 	end,
+	-- })
 	use({
 		'jose-elias-alvarez/null-ls.nvim',
 		requires = { 'nvim-lua/plenary.nvim' },
@@ -206,9 +253,19 @@ require('packer').startup(function(use)
 					formatting.shfmt.with({ extra_filetypes = { 'bash', 'sh', 'zsh' } }),
 					formatting.stylua,
 				},
-				on_attach = function(client)
-					if client.resolved_capabilities.document_formatting then
-						vim.cmd([[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]])
+				on_attach = function(client, bufnr)
+					if client.supports_method('textDocument/formatting') then
+						vim.api.nvim_create_autocmd('BufWritePre', {
+							buffer = bufnr,
+							callback = function()
+								vim.lsp.buf.format({
+									bufnr = bufnr,
+									filter = function(lsp_client)
+										return lsp_client.name == 'null-ls'
+									end,
+								})
+							end,
+						})
 					end
 				end,
 			})
@@ -329,11 +386,11 @@ require('packer').startup(function(use)
 				signs = false,
 				keywords = {
 					-- TODO:
-					TODO = { color = 'default', alt = { 'todo' } },
+					TODO = { color = 'hint', alt = { 'todo' } },
 					-- NOTE:
 					NOTE = { color = 'warning', alt = { 'note' } },
 					-- FIX:
-					FIX = { color = 'hint', alt = { 'fix' } },
+					FIX = { color = 'default', alt = { 'fix' } },
 					-- TEMP:
 					TEMP = { color = 'info', alt = { 'temp' } },
 				},

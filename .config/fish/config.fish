@@ -12,7 +12,19 @@ if status is-interactive
     set fish_greeting '🐟'
 
     function fish_title
-        echo '🐟'
+        set data ''
+        if set -q argv[1]
+            set data "- $argv[1]"
+        end
+
+        switch $argv[1]
+            case '* dev'
+                echo (string split -- / $PWD)[-1] ‣
+            case nvim 'nvim *'
+                echo (string split -- / $PWD)[-1] •
+            case '*'
+                echo (string split -- / $PWD)[-1] $data
+        end
     end
 
     function fish_prompt
@@ -36,3 +48,6 @@ abbr --add ,helix "$EDITOR ~/.config/helix/config.toml +'lcd %:p:h'"
 abbr --add ,lg "$EDITOR ~/.config/lazygit/config.yml +'lcd %:p:h'"
 
 bind \e\[108\;9u toggle-theme # `super+l`
+
+set -gx PNPM_HOME "/Users/leaf/.local/share/pnpm"
+set -gx PATH "$PNPM_HOME" $PATH

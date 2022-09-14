@@ -51,12 +51,19 @@ vim.keymap.set('n', 'gr', vim.lsp.buf.references, { silent = true })
 vim.keymap.set('n', 'g[', vim.diagnostic.goto_prev, { silent = true })
 vim.keymap.set('n', 'g]', vim.diagnostic.goto_next, { silent = true })
 
+local function format()
+	vim.cmd('!prettierd restart')
+	vim.lsp.buf.format()
+	vim.cmd('w')
+end
+
 local mappings = {
 	['/'] = { ':Telescope live_grep<cr>', 'find text (global)' },
 	c = {
 		name = 'code',
-		r = { vim.lsp.buf.rename, 'rename' },
 		a = { vim.lsp.buf.code_action, 'actions' },
+		f = { format, 'format and save' },
+		r = { vim.lsp.buf.rename, 'rename' },
 		s = {
 			function()
 				require('spectre').open_visual({ select_word = true })
@@ -68,6 +75,7 @@ local mappings = {
 	f = { ':Telescope find_files<cr>', 'find files' },
 	j = { '<c-w><c-w>', 'next split' },
 	k = { vim.diagnostic.open_float, 'show diagnostics' },
+	m = { ':Mason<cr>', 'Mason' },
 	q = { ':q<cr>', 'quit' },
 	r = { ':Telescope oldfiles<cr>', 'reopen files' },
 	w = { ':w<cr>', 'save' },
@@ -83,6 +91,7 @@ local mappings = {
 		j = { ':split<cr>', 'horizontal' },
 		o = { ':only<cr>', 'only (close other splits)' },
 	},
+	t = { ':TodoTelescope<cr>', 'todos' },
 }
 
 local g = {
