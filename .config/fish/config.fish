@@ -12,18 +12,23 @@ if status is-interactive
     set fish_greeting '🐟'
 
     function fish_title
-        set data ''
-        if set -q argv[1]
-            set data "- $argv[1]"
+        # get current directory name based on end of path
+        set current_dir (string split -- / $PWD)[-1]
+        # get current process name, e.g. "nvim" or "pnpm dev"
+        set current_process $argv[1]
+
+        set message ''
+        if set -q $current_process
+            set message "- $current_process"
         end
 
-        switch $argv[1]
+        switch $current_process
             case '* dev'
-                echo (string split -- / $PWD)[-1] ‣
+                echo $current_dir ‣
             case nvim 'nvim *'
-                echo (string split -- / $PWD)[-1] •
+                echo $current_dir •
             case '*'
-                echo (string split -- / $PWD)[-1] $data
+                echo $current_dir $message
         end
     end
 
