@@ -1,6 +1,14 @@
--- TODO:
--- remove globally installed servers / formatters (via brew and or npm -g)
--- automatically install mason servers and formatters:
--- https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim#configuration
-require('plugins')
-require('options')
+--- init.lua
+--- https://github.com/mvllow/lilvim
+---
+--- Combines all modules of lilvim.
+
+vim.g.mapleader = ' '
+
+require('lil-ui')
+require('lil-editing')
+require('lil-search')
+require('lil-lsp')
+require('lil-completions')
+require('lil-extras')
+require('lil-statusline')
