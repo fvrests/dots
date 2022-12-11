@@ -159,6 +159,7 @@ require('packer').startup(function(use)
 			'WhoIsSethDaniel/mason-tool-installer.nvim',
 		},
 		config = function()
+			local nvim_lsp = require('lspconfig')
 			require('mason').setup()
 			require('mason-tool-installer').setup({})
 
@@ -167,7 +168,7 @@ require('packer').startup(function(use)
 			-- Improve compatibility with nvim-cmp completions
 			local has_cmp_nvim_lsp, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
 			if has_cmp_nvim_lsp then
-				capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+				capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 			end
 
 			local signs = { Error = '● ', Warn = '● ', Hint = '● ', Info = '● ' }
@@ -183,12 +184,24 @@ require('packer').startup(function(use)
 			require('mason-lspconfig').setup_handlers({
 				function(server_name)
 					if server_name == 'sumneko_lua' then
-						require('lspconfig')[server_name].setup(require('lua-dev').setup({
+						nvim_lsp[server_name].setup(require('lua-dev').setup({
 							on_attach = on_attach,
 							capabilities = capabilities,
 						}))
+					elseif server_name == 'denols' then
+						nvim_lsp[server_name].setup({
+							on_attach = on_attach,
+							capabilities = capabilities,
+							root_dir = nvim_lsp.util.root_pattern('deno.json', 'deno.jsonc'),
+						})
+					elseif server_name == 'tsserver' then
+						nvim_lsp[server_name].setup({
+							on_attach = on_attach,
+							capabilities = capabilities,
+							root_dir = nvim_lsp.util.root_pattern('package.json'),
+						})
 					else
-						require('lspconfig')[server_name].setup({
+						nvim_lsp[server_name].setup({
 							on_attach = on_attach,
 							capabilities = capabilities,
 						})
@@ -252,6 +265,7 @@ require('packer').startup(function(use)
 					formatting.prettierd.with({ extra_filetypes = { 'svelte', 'jsonc', 'astro' } }),
 					formatting.shfmt.with({ extra_filetypes = { 'bash', 'sh', 'zsh' } }),
 					formatting.stylua,
+					formatting.goimports,
 				},
 				on_attach = function(client, bufnr)
 					if client.supports_method('textDocument/formatting') then
@@ -282,8 +296,8 @@ require('packer').startup(function(use)
 						require('luasnip').lsp_expand(args.body)
 					end,
 				},
-				mapping = {
-					['<c-space>'] = cmp.mapping.complete(),
+				mapping = cmp.mapping.preset.insert({
+					['<c-space>'] = cmp.mapping.complete({ select = false }),
 					['<cr>'] = cmp.mapping.confirm({
 						behavior = cmp.ConfirmBehavior.Replace,
 						select = false,
@@ -302,7 +316,7 @@ require('packer').startup(function(use)
 							fallback()
 						end
 					end,
-				},
+				}),
 				sources = { { name = 'nvim_lsp' } },
 			})
 		end,

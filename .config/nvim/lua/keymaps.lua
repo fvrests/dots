@@ -73,6 +73,7 @@ local mappings = {
 	},
 	e = { ':NvimTreeFindFileToggle<cr>', 'explorer' },
 	f = { ':Telescope find_files<cr>', 'find files' },
+	h = { ':Telescope help_tags<cr>', 'help' },
 	j = { '<c-w><c-w>', 'next split' },
 	k = { vim.diagnostic.open_float, 'show diagnostics' },
 	m = { ':Mason<cr>', 'Mason' },
