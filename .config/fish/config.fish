@@ -7,6 +7,7 @@ set -gx EDITOR nvim
 set -gx LS_COLORS true
 fish_add_path /opt/homebrew/bin
 fish_add_path $HOME/.cargo/bin
+fish_add_path $HOME/.local/bin
 
 if status is-interactive
     set fish_greeting '🐟'
@@ -49,8 +50,10 @@ abbr --add .lg "lazygit --git-dir=$HOME/dots.git --work-tree=$HOME"
 abbr --add ,kitty "$EDITOR ~/.config/kitty/kitty.conf +'lcd %:p:h'"
 abbr --add ,nvim "$EDITOR ~/.config/nvim/init.lua +'lcd %:p:h'"
 abbr --add ,fish "$EDITOR ~/.config/fish/config.fish +'lcd %:p:h'"
-abbr --add ,helix "$EDITOR ~/.config/helix/config.toml +'lcd %:p:h'"
+abbr --add ,hx "$EDITOR ~/.config/helix/config.toml +'lcd %:p:h'"
 abbr --add ,lg "$EDITOR ~/.config/lazygit/config.yml +'lcd %:p:h'"
+abbr --add ,skhd "$EDITOR ~/.config/skhd/skhdrc +'lcd %:p:h'"
+abbr --add ,yabai "$EDITOR ~/.config/yabai/yabairc +'lcd %:p:h'"
 
 bind \e\[108\;9u toggle-theme # `super+l`
 
