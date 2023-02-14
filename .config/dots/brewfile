@@ -11,10 +11,11 @@ brew "mas"
 brew "terminal-notifier"
 brew "git-delta"
 cask "visual-studio-code-insiders"
-cask "rectangle"
-cask "1password-beta"			
 cask "discord"				
 cask "font-fira-mono-nerd-font"
+cask "netnewswire"
+cask "notion"
+cask "raycast"
 
 mas "Toggl Track", id: 957734279
 mas "Slack", id: 803453959
