@@ -4,9 +4,10 @@ set -q XDG_DATA_HOME; or set -xg XDG_DATA_HOME $HOME/.local/share
 set -q XDG_STATE_HOME; or set -xg XDG_STATE_HOME $HOME/.local/state
 
 set -gx EDITOR nvim
-set -gx LS_COLORS true
+set -gx GOPATH $XDG_DATA_HOME/go
 fish_add_path /opt/homebrew/bin
 fish_add_path $HOME/.cargo/bin
+fish_add_path $GOPATH/bin
 fish_add_path $HOME/.local/bin
 
 if status is-interactive
@@ -50,12 +51,11 @@ abbr --add .lg "lazygit --git-dir=$HOME/dots.git --work-tree=$HOME"
 abbr --add ,kitty "$EDITOR ~/.config/kitty/kitty.conf +'lcd %:p:h'"
 abbr --add ,nvim "$EDITOR ~/.config/nvim/init.lua +'lcd %:p:h'"
 abbr --add ,fish "$EDITOR ~/.config/fish/config.fish +'lcd %:p:h'"
-abbr --add ,hx "$EDITOR ~/.config/helix/config.toml +'lcd %:p:h'"
+abbr --add ,helix "$EDITOR ~/.config/helix/config.toml +'lcd %:p:h'"
 abbr --add ,lg "$EDITOR ~/.config/lazygit/config.yml +'lcd %:p:h'"
-abbr --add ,skhd "$EDITOR ~/.config/skhd/skhdrc +'lcd %:p:h'"
-abbr --add ,yabai "$EDITOR ~/.config/yabai/yabairc +'lcd %:p:h'"
+abbr --add ,lf "$EDITOR ~/.config/lf/lfrc +'lcd %:p:h'"
 
-bind \e\[108\;9u toggle-theme # `super+l`
+alias rm trash
 
 set -gx PNPM_HOME "/Users/leaf/.local/share/pnpm"
 set -gx PATH "$PNPM_HOME" $PATH

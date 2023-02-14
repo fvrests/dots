@@ -6,6 +6,14 @@ return {
 	config = function()
 		require("rose-pine").setup({
 			highlight_groups = {
+				TodoFgTODO = { fg = "rose" },
+				TodoBgTODO = { fg = "base", bg = "rose" },
+				TodoFgNOTE = { fg = "gold" },
+				TodoBgNOTE = { fg = "base", bg = "gold" },
+				TodoFgfix = { fg = "love" },
+				TodoBgfix = { fg = "base", bg = "love" },
+				-- TodoFgtemp = { fg = "foam" },
+				-- TodoFginfo = { fg = "iris" },
 				NvimTreeFolderName = { fg = "text" },
 				TelescopeBorder = {
 					fg = "text",

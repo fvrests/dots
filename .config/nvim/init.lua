@@ -15,6 +15,7 @@ require("user/options")
 require("user/keymaps")
 require("lazy").setup("plugins", {
 	install = { colorscheme = { "rose-pine" } },
+	change_detection = { notify = false },
 })
 
 -- advent of code keymaps

@@ -1,29 +1,46 @@
 return {
 	"folke/todo-comments.nvim",
 	dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
-	keys = { {
-		"<leader>t",
-		":TodoTelescope<cr>",
-		desc = "Todos",
-	} },
+	cmd = { "TodoQuickFix", "TodoTelescope" },
+	event = "BufReadPost",
+	keys = {
+		{
+			"<leader>t",
+			"<cmd>TodoTelescope<cr>",
+			desc = "Todos",
+		},
+		{
+			"]t",
+			function()
+				require("todo-comments").jump_next()
+			end,
+			desc = "Next todo",
+		},
+		{
+
+			"[t",
+			function()
+				require("todo-comments").jump_prev()
+			end,
+			desc = "Previous todo",
+		},
+	},
 	opts = {
 		signs = false,
 		keywords = {
 			-- todo:
-			todo = { color = "hint", alt = { "todo" } },
+			TODO = { icon = "▨", color = "test", alt = { "todo" } },
 			-- note:
-			note = { color = "warning", alt = { "note" } },
+			NOTE = { icon = ">", color = "hint", alt = { "note" } },
+			-- info:
+			INFO = { icon = "i", color = "info", alt = { "info" } },
 			-- fix:
-			fix = { color = "default", alt = { "fix" } },
-			-- temp:
-			temp = { color = "info", alt = { "temp" } },
-		},
-		gui_style = {
-			fg = "bold",
+			FIX = { icon = "!", color = "default", alt = { "fix" } },
 		},
 		highlight = {
+			comments_only = true,
 			before = "fg",
-			keyword = "wide_fg",
+			keyword = "fg",
 			after = "fg",
 		},
 	},
