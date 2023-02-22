@@ -1,0 +1,123 @@
+# vim:ft=sh
+
+# set cursorfmt "\033[30;45m"]
+
+# set prompt colors
+# %u user %h host %d working dir %f file
+set promptfmt "\033[0;32m%u@\033[0;34m%h: \033[0;36m%d\033[0;33m%f\033[0m"
+# set '-eu' options for shell commands
+# These options are used to have safer shell commands. Option '-e' is used to
+# exit on error and option '-u' is used to give error for unset variables.
+# Option '-f' disables pathname expansion which can be useful when $f, $fs, and
+# $fx variables contain names with '*' or '?' characters. However, this option
+# is used selectively within individual commands as it can be limiting at
+# times.
+# info: https://github.com/gokcehan/lf/blob/master/etc/lfrc.example
+set shellopts '-eu'
+
+# leave some space at the top and the bottom of the screen
+set scrolloff 10
+
+# define a custom 'open' command
+# This command is called when current file is not a directory. You may want to
+# use either file extensions and/or mime types here. Below uses an editor for
+# text files and a file opener for the rest.
+cmd open &
+{{
+case $(file --mime-type -Lb $f) in
+text/*) lf -remote "send $id \$$EDITOR \$fx" ;;
+*) for f in $fx; do $OPENER $f >/dev/null 2>/dev/null & done ;;
+esac
+}}
+
+map <enter> open
+
+# f to search via fzf
+map f $vi $(fzf)
+
+# F to search within files
+cmd fzf_search ${{
+		res="$( \
+        RG_PREFIX="rg --column --line-number --no-heading --color=always --smart-case "
+        FZF_DEFAULT_COMMAND="$RG_PREFIX ''" \
+            fzf --bind "change:reload:$RG_PREFIX {q} || true" \
+            --ansi --layout=reverse --header 'Search in files' \
+            | cut -d':' -f1
+    )"
+    [ ! -z "$res" ] && lf -remote "send $id select \"$res\""
+}}
+map F :fzf_search
+
+# make sure trash folder exists
+%mkdir -p ~/.Trash
+
+# add trash command with prompt
+cmd trash %{{
+set -f
+RED='\033[0;31m'
+NC='\033[0m'
+count=$(echo "$fx" | wc -l | xargs echo -n)
+if [ $count == "1" ]; then
+	prompt="$RED Delete $fx? $NC(y/N) "
+	result="  Deleted $fx"
+else
+	prompt="$RED Delete $count items? $NC(y/N) "
+	result="  Deleted $count items"
+fi
+printf "$prompt"
+read ans
+[ $ans == "y" ] && trash $fx && echo "$RED$result$NC" || echo "Nothing was deleted"
+}}
+map d trash
+
+# remap cut to x (default d)
+map x cut
+
+# a to make directory and select (allows nesting)
+# cmd mkdir %{{
+# set -f
+# BLUE='\033[0;34m'
+# NC='\033[0m'
+# IFS=" "
+# printf " Create file or folder: "
+# read ans
+# if [ $(echo "$ans" | grep '/$') ]; then
+# 	mkdir -p -- "$ans"
+# else
+# 	mkdir -p "$(dirname "$ans")/" && touch "$ans"
+# fi
+# printf " ${BLUE}Created $ans$NC"
+# }}
+# map a mkdir
+
+cmd create %{{
+set -f
+BLUE='\034[0;31m'
+NC='\033[0m'
+if [ $(echo "$@" | grep '/$') ]; then
+	mkdir -p -- "$@"
+else
+	mkdir -p "$(dirname "$@")/" && touch "$@"
+fi
+echo "$BLUE  Created $@ $NC"
+}}
+
+map a %{{
+	lf -remote "send $id push :create<space>$(pwd)/"
+}}
+
+
+# A to create new folder with selected item(s)
+cmd newfold %{{
+set -f
+printf " Directory name: "
+read newd
+mkdir -- "$newd"
+mv -- $fx "$newd"
+echo
+}}
+map A newfold
+
+set previewer ~/.config/lf/lf_kitty_preview
+set cleaner ~/.config/lf/lf_kitty_clean
+
