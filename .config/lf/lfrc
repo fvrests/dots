@@ -52,21 +52,22 @@ map F :fzf_search
 %mkdir -p ~/.Trash
 
 # add trash command with prompt
+
 cmd trash %{{
 set -f
-RED='\033[0;31m'
-NC='\033[0m'
+RED="\033[0;31m"
+NC="\033[0m"
 count=$(echo "$fx" | wc -l | xargs echo -n)
-if [ $count == "1" ]; then
-	prompt="$RED Delete $fx? $NC(y/N) "
-	result="  Deleted $fx"
+if [[ $count == "1" ]]; then
+	prompt="$RED Delete $fx?$NC (y/N) "
+	result="$RED Deleted $fx$NC"
 else
-	prompt="$RED Delete $count items? $NC(y/N) "
-	result="  Deleted $count items"
+	prompt="$RED Delete $count items?$NC (y/N) "
+	result="$RED Deleted $count items$NC"
 fi
 printf "$prompt"
 read ans
-[ $ans == "y" ] && trash $fx && echo "$RED$result$NC" || echo "Nothing was deleted"
+[[ $ans == "y" ]] && trash $fx && echo "$result" || echo "Nothing was deleted"
 }}
 map d trash
 
