@@ -14,7 +14,10 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 
 -- Start scrolling before reaching screen edge.
-vim.opt.scrolloff = 10
+vim.opt.scrolloff = 12
+
+-- Remove reserved height for cmd
+vim.opt.cmdheight = 0
 
 -- Continue wrapped lines with matching indentation.
 vim.opt.breakindent = true
@@ -34,8 +37,8 @@ vim.opt.cursorline = true
 -- Always show sign column.
 vim.opt.signcolumn = "yes"
 
--- Show line numbers.
-vim.opt.number = true
+-- Hide line numbers.
+vim.opt.number = false
 
 -- Time in ms to update vim events.
 vim.opt.updatetime = 250

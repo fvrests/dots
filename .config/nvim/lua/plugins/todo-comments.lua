@@ -6,7 +6,7 @@ return {
 	keys = {
 		{
 			"<leader>t",
-			"<cmd>TodoTelescope<cr>",
+			"<cmd>TodoTelescope initial_mode=normal theme=dropdown<cr>",
 			desc = "Todos",
 		},
 		{

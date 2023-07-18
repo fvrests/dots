@@ -45,14 +45,13 @@ return {
 			cmd = "trash",
 		},
 		view = {
-			mappings = {
-				list = {
-					-- Replace destructive default with trash command.
-					{ key = "d", action = "trash" },
-					{ key = "D", action = "remove" },
-				},
-			},
 			side = "right",
 		},
+		on_attach = function(bufnr)
+			local api = require("nvim-tree.api")
+			api.config.mappings.default_on_attach(bufnr)
+			vim.keymap.set("n", "d", api.fs.trash, { buffer = bufnr })
+			vim.keymap.set("n", "D", api.fs.remove, { buffer = bufnr })
+		end,
 	},
 }

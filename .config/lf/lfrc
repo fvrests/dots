@@ -15,6 +15,9 @@ set promptfmt "\033[0;32m%u@\033[0;34m%h: \033[0;36m%d\033[0;33m%f\033[0m"
 # info: https://github.com/gokcehan/lf/blob/master/etc/lfrc.example
 set shellopts '-eu'
 
+# show hidden files
+set hidden
+
 # leave some space at the top and the bottom of the screen
 set scrolloff 10
 

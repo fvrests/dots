@@ -5,6 +5,9 @@ return {
 	priority = 1000,
 	config = function()
 		require("rose-pine").setup({
+			-- Transparency mode
+			disable_background = false,
+			disable_float_background = false,
 			highlight_groups = {
 				TodoFgTODO = { fg = "rose" },
 				TodoBgTODO = { fg = "base", bg = "rose" },
@@ -22,7 +25,7 @@ return {
 					fg = "gold",
 				},
 			},
-			disable_float_background = true,
+			-- disable_float_background = true,
 		})
 		vim.cmd("colorscheme rose-pine")
 	end,

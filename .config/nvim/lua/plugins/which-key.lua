@@ -6,8 +6,11 @@ return {
 				spelling = {
 					enabled = true,
 				},
+				presets = {
+					operators = false,
+				},
 			},
 		})
-		require("which-key").register({ c = "Code", s = "Split" }, { prefix = "<leader>" })
+		require("which-key").register({ c = "Code", s = "Split", u = "UI" }, { prefix = "<leader>" })
 	end,
 }

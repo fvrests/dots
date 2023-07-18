@@ -4,7 +4,7 @@ return {
 	keys = {
 		{
 			"<leader>f",
-			":Telescope find_files find_command=fd,-t,f,-H,-E,.git,--strip-cwd-prefix theme=dropdown previewer=false<cr>",
+			":Telescope find_files theme=dropdown previewer=false<cr>",
 			desc = "Find files",
 		},
 		{

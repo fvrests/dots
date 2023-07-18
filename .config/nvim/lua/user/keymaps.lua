@@ -51,3 +51,11 @@ vim.keymap.set("v", "*", [[y/\V<c-r>=escape(@",'/\')<cr><cr>N]], { silent = true
 -- Replace (allows n + . to replace more matches).
 vim.keymap.set("n", "&", "*Ncgn", { silent = true, desc = "Replace (repeatable)" })
 vim.keymap.set("v", "&", [[y/\V<c-r>=escape(@",'/\')<cr><cr>Ncgn]], { silent = true, desc = "Replace (repeatable)" })
+
+-- Toggle scrolloff
+local function toggle_scrolloff()
+	local scrolloff = vim.api.nvim_win_get_option(0, "scrolloff")
+	vim.api.nvim_win_set_option(0, "scrolloff", scrolloff == 0 and 5 or 0)
+end
+
+vim.keymap.set("n", "<leader>us", toggle_scrolloff, { silent = true, desc = "Toggle scrolloff" })

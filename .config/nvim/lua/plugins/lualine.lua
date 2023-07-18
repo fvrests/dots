@@ -8,8 +8,8 @@ return {
 			"filename",
 			symbols = {
 				modified = "   ",
-				readonly = " ",
-				unnamed = "",
+				readonly = " ⨯",
+				unnamed = " …",
 			},
 		}
 		require("lualine").setup({

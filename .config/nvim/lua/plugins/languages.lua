@@ -47,6 +47,12 @@ return {
 			function(server_name)
 				local opts = {}
 
+				if server_name == "vue-language-server" then
+					opts = {
+						filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
+					}
+				end
+
 				-- Remove shared root_dirs between deno and tsserver.
 				-- https://deno.land/manual@v1.28.3/getting_started/setup_your_environment#neovim-06-using-the-built-in-language-server
 				if server_name == "denols" then

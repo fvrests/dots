@@ -19,7 +19,7 @@ require("lazy").setup("plugins", {
 })
 
 -- advent of code keymaps
--- vim.keymap.set('n', '<space>b', ':!deno run --allow-read part1.ts<cr>')
+vim.keymap.set("n", "<space>b", ":!deno run --allow-read part1.ts<cr>")
 -- vim.keymap.set('n', '<space>b', ':!deno run --allow-read part2.ts<cr>')
 -- vim.keymap.set('n', '<space>b', ':!deno run --allow-read main.ts<cr>')
-vim.keymap.set("n", "<space>b", ":!cargo run --bin day03<cr>")
+-- vim.keymap.set("n", "<space>b", ":!cargo run --bin day03<cr>")
