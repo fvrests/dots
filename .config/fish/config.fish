@@ -48,7 +48,7 @@ abbr --add lg lazygit
 abbr --add p pnpm
 abbr --add n nvim
 
-
+# treat .git on expand as git prefix (e.g. .git add /dir/filename)
 abbr --add .git "git --git-dir=$HOME/dots.git --work-tree=$HOME"
 abbr --add .list "git --git-dir=$HOME/dots.git --work-tree=$HOME ls-files --other --no-empty-directory --exclude-standard $HOME/.config/*"
 abbr --add .lg "lazygit --git-dir=$HOME/dots.git --work-tree=$HOME"
