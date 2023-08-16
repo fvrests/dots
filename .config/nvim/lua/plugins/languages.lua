@@ -19,6 +19,10 @@ return {
 			virtual_text = false,
 		})
 		local function on_attach(_, bufnr)
+			-- Use omnifunc for completions
+			-- https://github.com/echasnovski/nvim/blob/487ce206d88412db5577435ba956fcf5a19d6302/lua/ec/configs/nvim-lspconfig.lua#L11-L26
+			vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.MiniCompletion.completefunc_lsp")
+
 			local function map(mode, key, action, options)
 				options = options or {}
 				options.buffer = options.buffer or bufnr

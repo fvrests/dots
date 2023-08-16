@@ -41,7 +41,7 @@ return {
 			comments_only = true,
 			before = "fg",
 			keyword = "fg",
-			after = "fg",
+			after = "",
 		},
 	},
 }

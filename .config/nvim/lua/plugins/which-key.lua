@@ -11,6 +11,6 @@ return {
 				},
 			},
 		})
-		require("which-key").register({ c = "Code", s = "Split", u = "UI" }, { prefix = "<leader>" })
+		require("which-key").register({ c = "Code", h = "Harpoon", s = "Split", u = "UI" }, { prefix = "<leader>" })
 	end,
 }

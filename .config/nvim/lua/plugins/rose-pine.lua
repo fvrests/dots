@@ -5,9 +5,7 @@ return {
 	priority = 1000,
 	config = function()
 		require("rose-pine").setup({
-			-- Transparency mode
-			disable_background = false,
-			disable_float_background = false,
+			disable_float_background = true,
 			highlight_groups = {
 				TodoFgTODO = { fg = "rose" },
 				TodoBgTODO = { fg = "base", bg = "rose" },
