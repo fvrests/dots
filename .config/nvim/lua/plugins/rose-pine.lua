@@ -3,10 +3,11 @@ return {
 	name = "rose-pine",
 	lazy = false,
 	priority = 1000,
+	-- branch = "canary",
 	config = function()
 		require("rose-pine").setup({
-			disable_float_background = true,
 			highlight_groups = {
+				NormalFloat = { bg = "NONE" },
 				TodoFgTODO = { fg = "rose" },
 				TodoBgTODO = { fg = "base", bg = "rose" },
 				TodoFgNOTE = { fg = "gold" },
@@ -23,7 +24,6 @@ return {
 					fg = "gold",
 				},
 			},
-			-- disable_float_background = true,
 		})
 		vim.cmd("colorscheme rose-pine")
 	end,

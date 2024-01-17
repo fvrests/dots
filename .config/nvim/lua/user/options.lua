@@ -14,10 +14,7 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 
 -- Start scrolling before reaching screen edge.
-vim.opt.scrolloff = 12
-
--- Remove reserved height for cmd
-vim.opt.cmdheight = 0
+vim.opt.scrolloff = 4
 
 -- Continue wrapped lines with matching indentation.
 vim.opt.breakindent = true
@@ -42,10 +39,6 @@ vim.opt.number = false
 
 -- Time in ms to update vim events.
 vim.opt.updatetime = 250
-
--- Opioniated global statusline.
--- vim.opt.statusline = ' %f %m %= %l:%c ♥ '
--- vim.opt.laststatus = 3
 
 -- Shorter vim messages.
 vim.opt.shortmess:append("c")

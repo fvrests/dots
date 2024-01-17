@@ -14,7 +14,6 @@ rm -rf dots-tmp
 
 alias dotgit='git --git-dir=$HOME/dots.git/ --work-tree=$HOME'
 
-dotgit config status.showUntrackedFiles no
 dotgit remote add origin git@github.com:fvrests/dots.git
 
 if ! [ $(which brew) ]; then

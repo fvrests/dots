@@ -2,7 +2,6 @@ return {
 	"neovim/nvim-lspconfig",
 	event = "BufReadPre",
 	dependencies = {
-		{ "folke/neodev.nvim", config = true },
 		{ "williamboman/mason.nvim", cmd = "Mason", config = true },
 		{ "williamboman/mason-lspconfig.nvim", config = true },
 		{ "WhoIsSethDaniel/mason-tool-installer.nvim", opts = {} },
@@ -41,8 +40,9 @@ return {
 			map("n", "gr", vim.lsp.buf.references, { desc = "Goto references" })
 		end
 
+		-- nvim-cmp supports additional completion capabilities, so broadcast that to servers
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
-		capabilities.offsetEncoding = { "utf-16" }
+		capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 		-- Automatically setup servers installed via Mason.
 		-- @usage :MasonInstall <server>

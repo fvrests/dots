@@ -41,6 +41,9 @@ map("n", "]d", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
 -- Show line diagnostics.
 map("n", "<leader>k", vim.diagnostic.open_float, { desc = "Diagnostics" })
 
+-- Set diagnostics into quickfix.
+map("n", "<leader>d", vim.diagnostic.setloclist, { desc = "Send diagnostics to quickfix" })
+
 -- Clear search highlights.
 vim.keymap.set("n", "<esc>", ":noh<cr>", { silent = true, desc = "Clear search highlights" })
 

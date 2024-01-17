@@ -58,3 +58,7 @@ abbr --add ,fish "$EDITOR ~/.config/fish/config.fish +'lcd %:p:h'"
 abbr --add ,nvim "$EDITOR ~/.config/nvim/init.lua +'lcd %:p:h'"
 abbr --add ,lg "$EDITOR ~/.config/lazygit/config.yml +'lcd %:p:h'"
 abbr --add ,lf "$EDITOR ~/.config/lf/lfrc +'lcd %:p:h'"
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH

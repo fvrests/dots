@@ -5,14 +5,7 @@ return {
 		"JoosepAlviste/nvim-ts-context-commentstring",
 	},
 	config = function()
-		require("nvim-treesitter.configs").setup({
-			-- Get comment string from treesitter. Useful for files with multiple
-			-- languages, e.g. html `style` tags.
-			context_commentstring = {
-				enable = true,
-				enable_autocmd = false,
-			},
-		})
+		require("ts_context_commentstring").setup({})
 
 		require("Comment").setup({
 			toggler = {

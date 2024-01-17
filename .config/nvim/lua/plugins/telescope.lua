@@ -16,7 +16,7 @@ return {
 		{
 
 			"<leader>/",
-			":Telescope live_grep<cr>",
+			":Telescope live_grep layout_strategy=vertical layout_config={height=0.9}<cr>",
 			desc = "Search",
 		},
 		{

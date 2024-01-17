@@ -1,8 +1,6 @@
 [user]
 	name = fvrests
 	email = fvrests@icloud.com
-[core]
-	excludesfile = ~/.config/dots/.gitignore
 [merge]
 	conflictstyle = diff3
 [pull]

@@ -1,0 +1,17 @@
+# ignore everything
+/*
+
+# ignore subfolders
+/*/
+
+!.gitignore
+!.config/
+!.github/
+
+# to include specific subfolders only:
+# include .local
+# !.local/
+# ignore contents of .local
+# /.local/*
+# include subfolder
+# !.local/bin/
