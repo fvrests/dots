@@ -5,7 +5,7 @@ return {
 	dependencies = "nvim-lua/plenary.nvim",
 	keys = { { "<space><space>", vim.lsp.buf.format, desc = "Format" } },
 	config = function()
-		local lsp_augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+		local format_on_save = vim.api.nvim_create_augroup("FormatOnSave", {})
 		require("null-ls").setup({
 			sources = {
 				require("null-ls").builtins.formatting.fish_indent,
@@ -18,9 +18,9 @@ return {
 			},
 			on_attach = function(client, bufnr)
 				if client.supports_method("textDocument/formatting") then
-					vim.api.nvim_clear_autocmds({ group = lsp_augroup, buffer = bufnr })
+					vim.api.nvim_clear_autocmds({ group = format_on_save, buffer = bufnr })
 					vim.api.nvim_create_autocmd("BufWritePre", {
-						group = lsp_augroup,
+						group = format_on_save,
 						buffer = bufnr,
 						callback = function()
 							vim.lsp.buf.format({

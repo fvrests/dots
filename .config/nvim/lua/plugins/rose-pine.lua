@@ -15,10 +15,10 @@ return {
 				TodoFgfix = { fg = "love" },
 				TodoBgfix = { fg = "base", bg = "love" },
 				-- TodoFgtemp = { fg = "foam" },
-				-- TodoFginfo = { fg = "iris" },
 				NvimTreeFolderName = { fg = "text" },
 				TelescopeBorder = {
 					fg = "text",
+					inherit = false,
 				},
 				NvimTreeFolderIcon = {
 					fg = "gold",
