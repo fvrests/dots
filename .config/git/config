@@ -3,7 +3,5 @@
 	email = fvrests@icloud.com
 [merge]
 	conflictstyle = diff3
-[pull]
-	rebase = false
 [init]
 	defaultBranch = main

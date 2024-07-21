@@ -8,7 +8,7 @@ return {
 			"filename",
 			symbols = {
 				modified = "   ",
-				readonly = " ⨯",
+				readonly = " 𝘅",
 				unnamed = " …",
 			},
 		}

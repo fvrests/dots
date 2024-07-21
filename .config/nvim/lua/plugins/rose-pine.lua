@@ -14,7 +14,6 @@ return {
 				TodoBgNOTE = { fg = "base", bg = "gold" },
 				TodoFgfix = { fg = "love" },
 				TodoBgfix = { fg = "base", bg = "love" },
-				-- TodoFgtemp = { fg = "foam" },
 				NvimTreeFolderName = { fg = "text" },
 				TelescopeBorder = {
 					fg = "text",

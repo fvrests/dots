@@ -5,6 +5,8 @@ gui:
     '*': magenta
   mainPanelSplitMode: "vertical" # one of 'horizontal' | 'flexible' | 'vertical'
   showCommandLog: false
+  showFileTree: false
+  border: 'rounded'
   theme:
     selectedLineBgColor:
       - black
@@ -14,8 +16,7 @@ gui:
     "fvrests": cyan
     "leaf": cyan
     "*": magenta
-  showFileTree: false
-  border: 'rounded'
 git:
   paging:
-    pager: delta --diff-highlight --minus-emph-style="reverse red" --minus-empty-line-marker-style="reverse red" --plus-emph-style="reverse green" --plus-empty-line-marker-style="reverse green" --hunk-header-style="line-number" --hunk-header-line-number-style="magenta" --file-style="yellow" --paging=never
+    # --dark prevents slow loading time: https://github.com/dandavison/delta/issues/1664
+    pager: delta --dark --diff-highlight --minus-emph-style="reverse red" --minus-empty-line-marker-style="reverse red" --plus-emph-style="reverse green" --plus-empty-line-marker-style="reverse green" --hunk-header-style="line-number" --hunk-header-line-number-style="magenta" --file-style="yellow" --paging=never

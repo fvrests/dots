@@ -27,7 +27,7 @@ if status is-interactive
         end
 
         switch $current_process
-            case '* dev'
+            case '* dev*'
                 echo $current_dir ‣
             case nvim 'nvim *'
                 echo $current_dir •
@@ -38,6 +38,10 @@ if status is-interactive
 
     function fish_prompt
         set -g fish_prompt_pwd_dir_length 0
+        set -gx __fix_git_prompt_showupstream informative
+        set -gx __fish_git_prompt_showstashstate true
+        set -gx __fish_git_prompt_char_stateseparator '|'
+        set -gx __fish_git_prompt_char_cleanslate '  '
         printf '%s%s> ' (prompt_pwd) (set_color yellow; fish_git_prompt; set_color normal)
     end
 end

@@ -11,7 +11,7 @@ return {
 
 			"<leader>r",
 			":Telescope oldfiles find_command=fd,-t,f,-H,-E,.git,--strip-cwd-prefix theme=dropdown previewer=false initial_mode=normal only_cwd=true<cr>",
-			desc = "Find files",
+			desc = "Recent files",
 		},
 		{
 
