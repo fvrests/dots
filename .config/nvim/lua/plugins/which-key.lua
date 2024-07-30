@@ -2,6 +2,8 @@ return {
 	"folke/which-key.nvim",
 	config = function()
 		require("which-key").setup({
+			preset = "helix",
+			sort = { "alphanum", "order", "mod" },
 			plugins = {
 				spelling = {
 					enabled = true,

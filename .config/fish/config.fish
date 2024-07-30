@@ -27,10 +27,10 @@ if status is-interactive
         end
 
         switch $current_process
-            case '* dev*'
-                echo $current_dir ‣
+            case '*dev'
+                echo ‣ $current_dir
             case nvim 'nvim *'
-                echo $current_dir •
+                echo ⋯ $current_dir
             case '*'
                 echo $current_dir $message
         end

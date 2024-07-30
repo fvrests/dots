@@ -3,7 +3,6 @@ return {
 	name = "rose-pine",
 	lazy = false,
 	priority = 1000,
-	-- branch = "canary",
 	config = function()
 		require("rose-pine").setup({
 			highlight_groups = {
