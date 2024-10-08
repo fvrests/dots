@@ -11,6 +11,7 @@ return {
 				readonly = " 𝘅",
 				unnamed = " …",
 			},
+			path = 1,
 		}
 		require("lualine").setup({
 			options = {
