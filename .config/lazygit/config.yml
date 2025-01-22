@@ -1,21 +1,17 @@
 gui:
   authorColors:
-    'leaf': cyan
-    'fvrests': cyan
-    '*': magenta
+    "leaf": cyan
+    "fvrests": cyan
+    "*": magenta
   mainPanelSplitMode: "vertical" # one of 'horizontal' | 'flexible' | 'vertical'
   showCommandLog: false
   showFileTree: false
-  border: 'rounded'
+  border: "rounded"
   theme:
     selectedLineBgColor:
       - black
     selectedRangeBgColor:
       - reverse
-  authorColors:
-    "fvrests": cyan
-    "leaf": cyan
-    "*": magenta
 git:
   paging:
     # --dark prevents slow loading time: https://github.com/dandavison/delta/issues/1664

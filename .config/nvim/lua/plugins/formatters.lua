@@ -1,46 +1,44 @@
 return {
 	"stevearc/conform.nvim",
-	event = "BufReadPre",
-	keys = { { "<space><space>", vim.lsp.buf.format, desc = "Format" } },
 	config = function()
+		local prettier = { "prettierd", "prettier", stop_after_first = true }
 		require("conform").setup({
 			notify_on_error = false,
+			default_format_opts = { lsp_format = "fallback" },
 			formatters_by_ft = {
 				fish = { "fish_indent" },
 				go = { "goimports" },
-				lua = { "stylua" },
 				rust = { "rustfmt" },
 
 				-- prettier (default)
-				javascript = { "prettierd", "prettier" },
-				javascriptreact = { "prettierd", "prettier" },
-				typescript = { "prettierd", "prettier" },
-				typescriptreact = { "prettierd", "prettier" },
-				vue = { "prettierd", "prettier" },
-				css = { "prettierd", "prettier" },
-				scss = { "prettierd", "prettier" },
-				less = { "prettierd", "prettier" },
-				html = { "prettierd", "prettier" },
-				json = { "prettierd", "prettier" },
-				jsonc = { "prettierd", "prettier" },
-				graphql = { "prettierd", "prettier" },
-				markdown = { "prettierd", "prettier" },
-				yaml = { "prettierd", "prettier" },
+				javascript = prettier,
+				javascriptreact = prettier,
+				typescript = prettier,
+				typescriptreact = prettier,
+				vue = prettier,
+				css = prettier,
+				scss = prettier,
+				less = prettier,
+				html = prettier,
+				json = prettier,
+				jsonc = prettier,
+				graphql = prettier,
+				markdown = prettier,
+				yaml = prettier,
 
 				-- prettier (via extensions)
-				astro = { "prettierd", "prettier" },
-				svelte = { "prettierd", "prettier" },
+				astro = prettier,
+				svelte = prettier,
 			},
 		})
+		vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 		vim.api.nvim_create_autocmd("BufWritePre", {
 			group = vim.api.nvim_create_augroup("FormatOnSave", { clear = true }),
 			pattern = "*",
-			callback = function(args)
-				require("conform").format({
-					bufnr = args.buf,
-					lsp_fallback = true,
-				})
+			callback = function()
+				require("conform").format({ timeout_ms = 1000 })
 			end,
 		})
+		vim.keymap.set("n", "<space><space>", vim.lsp.buf.format, { desc = "Format" })
 	end,
 }

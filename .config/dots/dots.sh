@@ -83,17 +83,9 @@ if [ $(uname) == "Darwin" ]; then
 	# finder
 	defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false # disable file extension change warning
 	defaults write com.apple.finder WarnOnEmptyTrash -bool false               # disable empty trash warning
-
-	# rectangle
-	defaults write com.knollsoft.Rectangle gapSize -int 10          # set window gaps
-	defaults write com.knollsoft.Rectangle launchOnLogin -bool true # launch on login
-	defaults write com.knollsoft.Rectangle almostMaximize -dict \
-		keyCode -int 7 \
-		modifierFlags -int 786432 # set almost maximize to ctrl+option+x
 fi
 
 echo "done; suggested next steps:"
-echo "- install Cartograph font"
 echo "- schedule night shift"
 echo "- map caps lock to escape"
 echo "- enable full disk access for terminal.app"

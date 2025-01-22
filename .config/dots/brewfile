@@ -1,25 +1,20 @@
 tap "homebrew/bundle"
-tap "homebrew/cask"
-tap "homebrew/cask-versions"
-tap "homebrew/core"
-tap "homebrew/cask-fonts"
-
-brew "node"
-brew "yarn"
+brew "fd"
 brew "fish"
-brew "mas"
-brew "terminal-notifier"
+brew "gh"
+brew "git"
 brew "git-delta"
-cask "visual-studio-code-insiders"
+brew "imagemagick"
+brew "jq"
+brew "lazygit"
+brew "neovim"
+brew "node"
+brew "pnpm"
+brew "ripgrep"
+brew "yarn"
+cask "brave-browser"
 cask "discord"				
-cask "font-fira-mono-nerd-font"
 cask "netnewswire"
 cask "notion"
+cask "orbstack"
 cask "raycast"
-
-mas "Toggl Track", id: 957734279
-mas "Slack", id: 803453959
-mas "Spark", id: 1176895641
-mas "Pages", id: 409201541
-mas "Numbers", id: 409203825
-

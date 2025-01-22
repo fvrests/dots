@@ -19,11 +19,11 @@ return {
 		})
 		require("which-key").add({
 			{ "<leader>\\", desc = "Matcha" },
-			{ "<leader>c", desc = "Code" },
-			{ "<leader>g", desc = "Gitsigns" },
-			{ "<leader>h", desc = "Harpoon" },
-			{ "<leader>s", desc = "Split" },
-			{ "<leader>u", desc = "UI" },
+			{ "<leader>c",  desc = "Code" },
+			{ "<leader>g",  desc = "Gitsigns" },
+			{ "<leader>h",  desc = "Harpoon" },
+			{ "<leader>s",  desc = "Split" },
+			{ "<leader>u",  desc = "UI" },
 		})
 	end,
 }

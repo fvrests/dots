@@ -40,8 +40,6 @@ return {
 			},
 		},
 		trash = {
-			-- Use cross-platform trash command.
-			-- https://github.com/sindresorhus/trash-cli
 			cmd = "trash",
 		},
 		view = {

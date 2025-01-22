@@ -1,10 +1,10 @@
-set -q XDG_CACHE_HOME; or set -xg XDG_CACHE_HOME $HOME/.cache
-set -q XDG_CONFIG_HOME; or set -xg XDG_CONFIG_HOME $HOME/.config
-set -q XDG_DATA_HOME; or set -xg XDG_DATA_HOME $HOME/.local/share
-set -q XDG_STATE_HOME; or set -xg XDG_STATE_HOME $HOME/.local/state
+set -gx XDG_CACHE_HOME $HOME/.cache
+set -gx XDG_CONFIG_HOME $HOME/.config
+set -gx XDG_DATA_HOME $HOME/.local/share
+set -gx XDG_STATE_HOME $HOME/.local/state
 
 set -gx EDITOR nvim
-set -gx LSCOLORS ExGxBxDxCxEgEdxbxgxcxd
+set -gx LSCOLORS ExGxBxDxCxEgEdxbxgxcxd # bold folders in ls
 set -gx GOPATH $XDG_DATA_HOME/go
 
 fish_add_path /opt/homebrew/bin
@@ -13,7 +13,7 @@ fish_add_path $GOPATH/bin
 fish_add_path $HOME/.local/bin
 
 if status is-interactive
-    set fish_greeting '🐟'
+    set fish_greeting 'Ti amo mi amore 󰊠 '
 
     function fish_title
         # get current directory name based on end of path
@@ -46,11 +46,9 @@ if status is-interactive
     end
 end
 
-alias rm trash
-
-abbr --add lg lazygit
-abbr --add p pnpm
 abbr --add n nvim
+abbr --add p pnpm
+abbr --add lg lazygit
 
 # treat .git on expand as git prefix (e.g. .git add /dir/filename)
 abbr --add .git "git --git-dir=$HOME/dots.git --work-tree=$HOME"
@@ -61,7 +59,6 @@ abbr --add ,kitty "$EDITOR ~/.config/kitty/kitty.conf +'lcd %:p:h'"
 abbr --add ,fish "$EDITOR ~/.config/fish/config.fish +'lcd %:p:h'"
 abbr --add ,nvim "$EDITOR ~/.config/nvim/init.lua +'lcd %:p:h'"
 abbr --add ,lg "$EDITOR ~/.config/lazygit/config.yml +'lcd %:p:h'"
-abbr --add ,lf "$EDITOR ~/.config/lf/lfrc +'lcd %:p:h'"
 
 # bun
 set --export BUN_INSTALL "$HOME/.bun"

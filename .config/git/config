@@ -1,7 +1,7 @@
+[init]
+	defaultbranch = main
+[merge]
+	conflictstyle = diff3
 [user]
 	name = fvrests
 	email = fvrests@icloud.com
-[merge]
-	conflictstyle = diff3
-[init]
-	defaultBranch = main

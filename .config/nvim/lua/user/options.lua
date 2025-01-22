@@ -2,48 +2,53 @@
 vim.opt.pumheight = 10
 
 -- Indentation levels.
-vim.opt.tabstop = 2
-vim.opt.softtabstop = 2
-vim.opt.shiftwidth = 2
+vim.o.tabstop = 2
+vim.o.shiftwidth = 2
 
 -- Persistent undo between sessions.
-vim.opt.undofile = true
+vim.o.undofile = true
 
 -- Natural split directions.
-vim.opt.splitbelow = true
-vim.opt.splitright = true
+vim.o.splitbelow = true
+vim.o.splitright = true
 
 -- Start scrolling before reaching screen edge.
-vim.opt.scrolloff = 4
+vim.o.scrolloff = 4
 
 -- Continue wrapped lines with matching indentation.
-vim.opt.breakindent = true
+vim.o.breakindent = true
+
+-- Case-insensitive search, unless search contains uppercase.
+vim.o.ignorecase = true
+vim.o.smartcase = true
+
+-- Enable cursorline highlight.
+vim.o.cursorline = true
+
+-- Always show sign column.
+vim.o.signcolumn = "yes"
+
+-- Time in ms to update vim events.
+vim.o.updatetime = 250
 
 -- Stop 'o' continuing comments.
 vim.api.nvim_create_autocmd("BufEnter", {
 	command = "setlocal formatoptions-=o",
 })
 
--- Case-insensitive search, unless search contains uppercase.
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-
--- Enable cursorline highlight.
-vim.opt.cursorline = true
-
--- Always show sign column.
-vim.opt.signcolumn = "yes"
-
--- Hide line numbers.
-vim.opt.number = false
-
--- Time in ms to update vim events.
-vim.opt.updatetime = 250
-
--- Shorter vim messages.
-vim.opt.shortmess:append("c")
-
 -- Equally resize buffer splits.
 vim.api.nvim_create_autocmd("VimResized", {
 	command = "tabdo wincmd =",
+})
+
+vim.diagnostic.config({
+	signs = {
+		text = {
+			[vim.diagnostic.severity.ERROR] = "⏺",
+			[vim.diagnostic.severity.WARN] = "⏺",
+			[vim.diagnostic.severity.INFO] = "⏺",
+			[vim.diagnostic.severity.HINT] = "⏺",
+		},
+	},
+	virtual_text = false,
 })

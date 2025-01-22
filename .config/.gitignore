@@ -1,5 +1,7 @@
+/configstore/
 /fish/fish_variables
+/gh/
+/github-copilot/
 /lazygit/state.yml
 /raycast/
-/configstore/
-/gh/
+/zed/
