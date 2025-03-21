@@ -1,7 +1,7 @@
 return {
 	"mvllow/matcha.nvim",
 	config = {
-		prefix = [[\]],
+		prefix = [[<leader>\]],
 		keys = {
 			f = "FormatOnSave",
 			d = "matcha_diagnostics",

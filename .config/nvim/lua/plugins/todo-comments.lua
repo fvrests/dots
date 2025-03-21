@@ -35,7 +35,11 @@ return {
 			-- info:
 			INFO = { icon = "i", color = "info", alt = { "info" } },
 			-- fix:
-			FIX = { icon = "!", color = "default", alt = { "fix" } },
+			FIX = { icon = "!", color = "error", alt = { "fix" } },
+			-- hack:
+			HACK = { icon = "*", color = "hint", alt = { "hack" } },
+			-- perf:
+			PERF = { icon = "~", color = "hint", alt = { "perf" } },
 		},
 		highlight = {
 			comments_only = true,

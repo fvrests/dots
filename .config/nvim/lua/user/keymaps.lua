@@ -27,12 +27,26 @@ vim.keymap.set("n", "[b", ":bp", { desc = "Previous buffer" })
 vim.keymap.set("n", "]b", ":bn", { desc = "Next buffer" })
 vim.keymap.set("n", "[f", "<c-^>", { desc = "Previous focused buffer" })
 
--- Show line diagnostics.
+-- Show line diagnostics
 vim.keymap.set("n", "<leader>k", vim.diagnostic.open_float, { desc = "Diagnostics" })
 
--- Clear search highlights.
+-- Clear search highlights
 vim.keymap.set("n", "<esc>", ":noh<cr>", { desc = "Clear search highlights" })
 
--- Replace (allows n + . to replace more matches).
+-- Replace (allows n + . to replace more matches)
 vim.keymap.set("n", "&", "*Ncgn", { desc = "Replace (repeatable)" })
 vim.keymap.set("v", "&", [[y/\V<c-r>=escape(@",'/\')<cr><cr>Ncgn]], { desc = "Replace (repeatable)" })
+
+-- Comments
+vim.keymap.set("v", ",", "gc", { remap = true })
+vim.keymap.set("n", ",,", function()
+	if vim.fn.getline("."):match("^%s*$") then
+		local pos = vim.bo.commentstring:find("%%s")
+		local comment = vim.bo.commentstring:gsub("%%s", "")
+		vim.api.nvim_put({ comment }, "", false, false)
+		vim.cmd("startinsert")
+		vim.api.nvim_win_set_cursor(0, { vim.fn.line("."), pos - 1 })
+	else
+		vim.cmd("normal gcc")
+	end
+end)
