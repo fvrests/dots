@@ -56,6 +56,7 @@ abbr --add .list "git --git-dir=$HOME/dots.git --work-tree=$HOME ls-files --othe
 abbr --add .lg "lazygit --git-dir=$HOME/dots.git --work-tree=$HOME"
 
 abbr --add ,kitty "$EDITOR ~/.config/kitty/kitty.conf +'lcd %:p:h'"
+abbr --add ,ghostty "$EDITOR ~/.config/ghostty/config +'lcd %:p:h'"
 abbr --add ,fish "$EDITOR ~/.config/fish/config.fish +'lcd %:p:h'"
 abbr --add ,nvim "$EDITOR ~/.config/nvim/init.lua +'lcd %:p:h'"
 abbr --add ,lg "$EDITOR ~/.config/lazygit/config.yml +'lcd %:p:h'"
@@ -63,3 +64,28 @@ abbr --add ,lg "$EDITOR ~/.config/lazygit/config.yml +'lcd %:p:h'"
 # bun
 set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
+
+# Added by OrbStack: command-line tools and integration
+# This won't be added again if you remove it.
+source ~/.orbstack/shell/init2.fish 2>/dev/null || :
+
+# rbenv
+# https://jeremywsherman.com/blog/2015/07/28/using-rbenv-with-fish/
+fish_add_path "$HOME/.rbenv/shims"
+rbenv rehash
+function rbenv
+    set -l command $argv[1]
+    if test (count $argv) -gt 1
+        set argv $argv[2..-1]
+    end
+
+    switch "$command"
+        case rehash shell
+            eval (rbenv "sh-$command" $argv)
+        case '*'
+            command rbenv "$command" $argv
+    end
+end
+
+# libpq
+fish_add_path /opt/homebrew/opt/libpq/bin

@@ -1,0 +1,11 @@
+font-family = IBM Plex Mono
+font-size = 14
+font-thicken
+font-thicken-strength = 200
+adjust-cell-height = 30%
+macos-titlebar-style = tabs
+window-padding-y = 10
+window-padding-x = 20
+window-padding-balance = true
+macos-icon = blueprint
+config-file = theme
