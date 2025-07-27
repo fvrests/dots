@@ -1,3 +1,6 @@
+require("vim._extui").enable({})
+vim.o.cmdheight = 0
+
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -18,7 +21,6 @@ vim.opt.rtp:prepend(lazypath)
 
 require("user/options")
 require("user/keymaps")
-require("lazy").setup("plugins", { install = { colorscheme = { "rose-pine" } }, change_detection = { notify = false } })
 require("lazy").setup({
 	spec = {
 		-- import your plugins
@@ -27,7 +29,10 @@ require("lazy").setup({
 	-- colorscheme that will be used when installing plugins
 	install = { colorscheme = { "rose-pine" } },
 	-- if true, lazy will automatically check for plugin updates
-	checker = { enabled = false },
+	checker = { enabled = false, notify = false },
+	change_detection = {
+		notify = false
+	},
 })
 
 -- -- advent of code keymaps

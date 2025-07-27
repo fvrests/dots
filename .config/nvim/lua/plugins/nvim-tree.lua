@@ -1,5 +1,5 @@
 return {
-	"kyazdani42/nvim-tree.lua",
+	"nvim-tree/nvim-tree.lua",
 	keys = { { "<leader>e", ":NvimTreeFindFileToggle<cr>", desc = "Toggle file tree" } },
 	opts = {
 		actions = {

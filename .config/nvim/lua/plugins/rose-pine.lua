@@ -14,6 +14,7 @@ return {
 				TodoFgfix = { fg = "love" },
 				TodoBgfix = { fg = "base", bg = "love" },
 				-- better default with gitsigns folder names
+				NonText = { fg = "gold" },
 				NvimTreeFolderName = { fg = "text" },
 				TelescopeBorder = {
 					fg = "text",
