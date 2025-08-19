@@ -1,5 +1,5 @@
-font-family = IBM Plex Mono
-font-size = 14
+font-family = Geist Mono
+font-size = 15
 font-thicken
 font-thicken-strength = 200
 adjust-cell-height = 30%
@@ -10,3 +10,4 @@ window-padding-balance = true
 macos-icon = blueprint
 confirm-close-surface = false
 config-file = theme
+mouse-hide-while-typing = true

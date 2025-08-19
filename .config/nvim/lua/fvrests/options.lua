@@ -1,5 +1,9 @@
+-- Enable experimental UI (reduce "Press ENTER to continue" occurences)
+-- require("vim._extui").enable({})
+-- vim.o.cmdheight   = 0
+
 -- Number of items to show in popup menu.
-vim.opt.pumheight = 10
+vim.o.pumheight   = 10
 
 -- Indentation levels.
 vim.o.tabstop     = 2
@@ -33,16 +37,6 @@ vim.o.signcolumn  = "yes"
 -- Time in ms to update vim events.
 vim.o.updatetime  = 250
 
--- Stop 'o' continuing comments.
-vim.api.nvim_create_autocmd("BufEnter", {
-	command = "setlocal formatoptions-=o",
-})
-
--- Equally resize buffer splits.
-vim.api.nvim_create_autocmd("VimResized", {
-	command = "tabdo wincmd =",
-})
-
 vim.diagnostic.config({
 	signs = {
 		text = {
@@ -55,6 +49,16 @@ vim.diagnostic.config({
 	virtual_text = false,
 })
 
+-- Stop 'o' continuing comments.
+vim.api.nvim_create_autocmd("BufEnter", {
+	command = "setlocal formatoptions-=o",
+})
+
+-- Equally resize buffer splits.
+vim.api.nvim_create_autocmd("VimResized", {
+	command = "tabdo wincmd =",
+})
+
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("CustomLspAttach", { clear = false }),
 	callback = function(args)
@@ -62,9 +66,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		if not client then
 			return
 		end
+
 		if client:supports_method("textDocument/documentColor") then
 			vim.lsp.document_color.enable(true, args.buf, { style = "virtual" })
 		end
+
 		vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = true, desc = "Code actions" })
 		vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, { buffer = true, desc = "Rename symbol" })
 

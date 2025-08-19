@@ -1,30 +1,17 @@
-return {
-	"rose-pine/neovim",
-	name = "rose-pine",
-	lazy = false,
-	priority = 1000,
-	config = function()
-		require("rose-pine").setup({
-			highlight_groups = {
-				NormalFloat = { bg = "NONE" },
-				TodoFgTODO = { fg = "rose" },
-				TodoBgTODO = { fg = "base", bg = "rose" },
-				TodoFgNOTE = { fg = "gold" },
-				TodoBgNOTE = { fg = "base", bg = "gold" },
-				TodoFgfix = { fg = "love" },
-				TodoBgfix = { fg = "base", bg = "love" },
-				-- better default with gitsigns folder names
-				NonText = { fg = "gold" },
-				NvimTreeFolderName = { fg = "text" },
-				TelescopeBorder = {
-					fg = "text",
-					inherit = false,
-				},
-				NvimTreeFolderIcon = {
-					fg = "gold",
-				},
-			},
-		})
-		vim.cmd("colorscheme rose-pine")
-	end,
-}
+require("rose-pine").setup({
+	highlight_groups = {
+		NonText = { fg = "rose" },
+		-- NormalFloat = { bg = "NONE" },
+		NvimTreeFolderIcon = { fg = "gold" },
+		NvimTreeFolderName = { fg = "text" },
+		TelescopeBorder = { fg = "text", inherit = false },
+		TodoBgNOTE = { fg = "base", bg = "gold" },
+		TodoBgTODO = { fg = "base", bg = "rose" },
+		TodoBgfix = { fg = "base", bg = "love" },
+		TodoFgNOTE = { fg = "gold" },
+		TodoFgTODO = { fg = "rose" },
+		TodoFgfix = { fg = "love" },
+	},
+})
+
+vim.cmd("colorscheme rose-pine")

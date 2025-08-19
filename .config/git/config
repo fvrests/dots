@@ -18,3 +18,5 @@
   renames = true
 [push]
   autoSetupRemote = true
+[pull]
+ 	rebase = true

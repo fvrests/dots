@@ -1,4 +1,1 @@
-return {
-	"mvllow/modes.nvim",
-	config = true,
-}
+require("modes").setup()

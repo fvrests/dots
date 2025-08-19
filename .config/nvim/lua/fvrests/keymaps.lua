@@ -3,7 +3,8 @@ vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>q", ":q<cr>", { desc = "Quit" })
 vim.keymap.set("n", "<leader>w", ":w<cr>", { desc = "Save" })
 
-vim.keymap.set({ "n", "v" }, "<leader>y", '"*y', { desc = "Yank to system clipboard" })
+vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { desc = "Yank to clipboard" })
+
 vim.keymap.set("n", "S", ":%s/<c-r><c-w>//g<left><left>", { desc = "Substitute current word (regex)" })
 
 -- Splits
@@ -31,7 +32,7 @@ vim.keymap.set("n", "[f", "<c-^>", { desc = "Previous focused buffer" })
 vim.keymap.set("n", "<leader>k", vim.diagnostic.open_float, { desc = "Diagnostics" })
 
 -- Clear search highlights
-vim.keymap.set("n", "<esc>", ":noh<cr>", { desc = "Clear search highlights" })
+vim.keymap.set("n", "<esc>", ":noh<cr>", { silent = true, desc = "Clear search highlights" })
 
 -- Replace (allows n + . to replace more matches)
 vim.keymap.set("n", "&", "*Ncgn", { desc = "Replace (repeatable)" })
