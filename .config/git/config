@@ -20,3 +20,6 @@
   autoSetupRemote = true
 [pull]
  	rebase = true
+[alias]
+	pushf = "push --force-with-lease --force-if-includes"
+	backup = "!git branch backup/$(git branch --show-current | sed 's/\\//-/g')-$(date +%Y%m%d-%H%M%S)"

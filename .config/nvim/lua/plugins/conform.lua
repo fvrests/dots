@@ -21,6 +21,7 @@ require("conform").setup({
 		yaml = { "prettier" },
 		astro = { "prettier" },
 		svelte = { "prettier" },
+		ruby = { "rubocop" },
 	},
 })
 

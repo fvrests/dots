@@ -1,8 +1,6 @@
 # Set theme for macOS system, ghostty terminal, and fish shell
 #
 # @requires
-# kitty (https://github.com/kovidgoyal/kitty)
-# OR
 # ghostty (https://github.com/ghostty-org/ghostty)
 #
 # @usage
@@ -10,8 +8,8 @@
 # toggle_theme [system|light|dark]
 function toggle_theme -a mode
 
-    set dark_theme rose-pine
-    set light_theme rose-pine-dawn
+    set dark_theme Rose Pine
+    set light_theme Rose Pine Dawn
     set -q THEME
 
     if test "$mode" = light
@@ -47,19 +45,6 @@ function toggle_theme -a mode
     #         "s/    \"\*\": \"#c4a7e7\"/    \"*\": \"#907aa9\"/" \
     #         "$HOME/.config/lazygit/config.yml"
     # end
-
-    # Manually change kitty theme to local variant
-    # Requires `allow_remote_control yes` in your kitty.conf
-    sed -i "" -e \
-        "s/include themes\/.*\.conf/include themes\/$THEME.conf/" \
-        "$HOME/.config/kitty/kitty.conf"
-
-    if test "$TERM" = xterm-kitty
-        kitty @ set-colors --all --configured "~/.config/kitty/themes/$THEME.conf"
-        # Use kitten to set theme
-        # Syntax may differ, eg. rose-pine becomes Rosé Pine
-        # kitty +kitten themes --reload-in=all "$THEME"
-    end
 
     # Manually change ghostty theme to local variant
     # Requires file `theme` in .config/ghostty 

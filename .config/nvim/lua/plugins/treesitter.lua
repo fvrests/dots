@@ -6,9 +6,13 @@ vim.api.nvim_create_autocmd("FileType", {
 			return
 		end
 		require("nvim-treesitter").install(lang):await(function()
-			-- vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-			vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 			pcall(vim.treesitter.start)
+			vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+			-- vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+			-- Fix vim-rails `gf` on partial paths
+			if lang == "embedded_template" then
+				vim.bo.syntax = "on"
+			end
 		end)
 	end
 })
