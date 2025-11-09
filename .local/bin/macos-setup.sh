@@ -28,7 +28,7 @@ if ! [ $(which brew) ]; then
 fi
 
 brew upgrade
-brew bundle --file="$HOME/.config/dots/brewfile"
+brew bundle --file="$HOME/brewfile"
 brew cleanup
 
 if [ $(which fish) ]; then
@@ -84,5 +84,5 @@ echo "- schedule night shift"
 echo "- map caps lock to escape"
 echo "- enable full disk access for terminal.app"
 echo "- show develop in safari menu"
-echo "- to set accent color, go to .config/dots folder and run sh macos-accent.sh"
+echo "- to set accent color, go to .local/bin folder and run sh macos-accent.sh"
 echo "- reboot for all changes to take effect"

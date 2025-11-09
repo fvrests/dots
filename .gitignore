@@ -4,14 +4,16 @@
 # ignore subfolders
 /*/
 
+# don't ignore dotfiles
 !.gitignore
+!brewfile
 !.config/
 !.github/
 
 # to include specific subfolders only:
 # include .local
-# !.local/
+!.local/
 # ignore contents of .local
-# /.local/*
+/.local/*
 # include subfolder
-# !.local/bin/
+!.local/bin/

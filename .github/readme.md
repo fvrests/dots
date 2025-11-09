@@ -23,6 +23,12 @@ rsync --recursive --verbose --exclude '.git' dots-tmp/ $HOME/
 rm -rf dots-tmp
 ```
 
+Run macos-setup script.
+
+```sh
+sh ~/.local/bin/macos-setup.sh
+```
+
 ## System preferences
 
 | Setting                                               | Value     |
