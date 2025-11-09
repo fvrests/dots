@@ -4,23 +4,14 @@
 
 Info on setting up a barerepo for the first time:
 
-> [postylem/dotfiles](https://github.com/postylem/dotfiles)
+> [postylem/dotfiles](https://github.com/postylem/dotfiles-ARCHIVE)
 
-## Download
-
-```sh
-curl -LJO https://raw.githubusercontent.com/fvrests/dots/main/.config/dots/dots.sh && sh ./dots.sh
-```
-
-## Manual installation
-
-> Log in to Mac app store before run - allows homebrew to install `mas` apps
+## Installation
 
 Clone to a temp directory.
 
 ```sh
-git clone \
-  --separate-git-dir=$HOME/dots.git \
+git clone --separate-git-dir=$HOME/dots.git \
   https://github.com/fvrests/dots.git \
   dots-tmp
 ```
@@ -32,19 +23,10 @@ rsync --recursive --verbose --exclude '.git' dots-tmp/ $HOME/
 rm -rf dots-tmp
 ```
 
-Optionally, add an alias to manage your dots directly.
-
-```sh
-alias .git='git --git-dir=$HOME/dots.git/ --work-tree=$HOME'
-```
-
 ## System preferences
 
 | Setting                                               | Value     |
 | ----------------------------------------------------- | --------- |
-| **Global**                                            |           |
-| Accent color                                          | pink      |
-| Highlight color                                       | purple    |
 | **Dock**                                              |           |
 | Autohide                                              | true      |
 | Show recent apps                                      | false     |

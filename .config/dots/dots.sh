@@ -4,17 +4,21 @@ clear
 
 echo "dots"
 
-git clone \
-	--separate-git-dir=$HOME/dots.git \
-	https://github.com/fvrests/dots.git \
-	dots-tmp
-
-rsync --recursive --verbose --exclude '.git' dots-tmp/ $HOME/
-rm -rf dots-tmp
-
-alias dotgit='git --git-dir=$HOME/dots.git/ --work-tree=$HOME'
-
-dotgit remote add origin git@github.com:fvrests/dots.git
+if ! [ -f ~/.ssh/id_ed25519 ]; then
+	echo "- no ssh credentials found. initializing ssh files at ~/.ssh"
+	mkdir ~/.ssh
+	chmod 700 ~/.ssh
+	touch ~/.ssh/id_ed25519.pub
+	chmod 644 ~/.ssh/id_ed25519.pub
+	touch ~/.ssh/id_ed25519
+	chmod 600 ~/.ssh/id_ed25519
+	read -p "- copy public key and press any key to open ~/.ssh/id_ed25519.pub"
+	$EDITOR ~/.ssh/id_ed25519.pub 
+	read -p "- copy private key and press any key to open ~/.ssh/id_ed25519"
+	$EDITOR ~/.ssh/id_ed25519
+	read -p "- press any key to use ssh origin for dotfiles"
+	git --git-dir=$HOME/dots.git/ --work-tree=$HOME remote set-url origin git@github.com:fvrests/dots.git
+fi
 
 if ! [ $(which brew) ]; then
 	echo "- installing homebrew"
@@ -33,20 +37,9 @@ if [ $(which fish) ]; then
 	chsh -s $(which fish)
 fi
 
-if [ -f ~/.ssh/id_ed25519 ]; then
-	echo "- generating ssh key"
-	ssh-keygen -t ed25519 -C $(git config --global user.email) -f ~/.ssh/id_ed25519 -q -N ""
-	pbcopy <~/.ssh/id_ed25519.pub
-	echo "- copied ssh key to clipboard"
-fi
-
 if [ $(uname) == "Darwin" ]; then
 	# copy sf mono from terminal.app
 	cp -r /System/Applications/Utilities/Terminal.app/Contents/Resources/Fonts/. /Library/Fonts/
-
-	# global
-	defaults write -globalDomain AppleAccentColor -int 6                                         # accent color: pink
-	defaults write -globalDomain AppleHighlightColor -string "0.968627 0.831373 1.000000 Purple" # highlight color: purple
 
 	# dock
 	defaults write com.apple.dock autohide -bool true      # autohide
@@ -86,9 +79,10 @@ if [ $(uname) == "Darwin" ]; then
 fi
 
 echo "done; suggested next steps:"
+echo "- sign in to icloud"
 echo "- schedule night shift"
 echo "- map caps lock to escape"
 echo "- enable full disk access for terminal.app"
-echo "- enable messages in icloud"
 echo "- show develop in safari menu"
+echo "- to set accent color, go to .config/dots folder and run sh macos-accent.sh"
 echo "- reboot for all changes to take effect"
