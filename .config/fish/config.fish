@@ -68,24 +68,3 @@ set --export PATH $BUN_INSTALL/bin $PATH
 # Added by OrbStack: command-line tools and integration
 # This won't be added again if you remove it.
 source ~/.orbstack/shell/init2.fish 2>/dev/null || :
-
-# rbenv
-# https://jeremywsherman.com/blog/2015/07/28/using-rbenv-with-fish/
-fish_add_path "$HOME/.rbenv/shims"
-rbenv rehash
-function rbenv
-    set -l command $argv[1]
-    if test (count $argv) -gt 1
-        set argv $argv[2..-1]
-    end
-
-    switch "$command"
-        case rehash shell
-            eval (rbenv "sh-$command" $argv)
-        case '*'
-            command rbenv "$command" $argv
-    end
-end
-
-# libpq
-fish_add_path /opt/homebrew/opt/libpq/bin
