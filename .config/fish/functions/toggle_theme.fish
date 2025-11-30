@@ -7,19 +7,18 @@
 # toggle_theme
 # toggle_theme [system|light|dark]
 function toggle_theme -a mode
-
-    set dark_theme Rose Pine
-    set light_theme Rose Pine Dawn
+    set dark_theme "Rose Pine"
+    set light_theme "Rose Pine Dawn"
     set -q THEME
 
     if test "$mode" = light
-        set -u THEME $light_theme
+        set -U THEME $light_theme
     else if test "$mode" = dark
-        set -u THEME $dark_theme
+        set -U THEME $dark_theme
     else if test "$THEME" = $dark_theme
-        set -u THEME $light_theme
+        set -U THEME $light_theme
     else
-        set -u THEME $dark_theme
+        set -U THEME $dark_theme
     end
 
     # # todo: set in lazygit config
