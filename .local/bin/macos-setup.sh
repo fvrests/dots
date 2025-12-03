@@ -13,9 +13,9 @@ if ! [ -f ~/.ssh/id_ed25519 ]; then
 	touch ~/.ssh/id_ed25519
 	chmod 600 ~/.ssh/id_ed25519
 	read -p "- copy public key and press any key to open ~/.ssh/id_ed25519.pub"
-	$EDITOR ~/.ssh/id_ed25519.pub 
+	vim ~/.ssh/id_ed25519.pub 
 	read -p "- copy private key and press any key to open ~/.ssh/id_ed25519"
-	$EDITOR ~/.ssh/id_ed25519
+	vim ~/.ssh/id_ed25519
 	read -p "- press any key to use ssh origin for dotfiles"
 	git --git-dir=$HOME/dots.git/ --work-tree=$HOME remote set-url origin git@github.com:fvrests/dots.git
 fi
