@@ -54,7 +54,6 @@ if [ $(uname) == "Darwin" ]; then
 	defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false   # disable smart dash
 	defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false  # disable smart quote
 	defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false # disable period on double space
-	defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false             # enable key repeat in all apps
 	defaults write NSGlobalDomain InitialKeyRepeat -int 15                         # set shorter delay before key repeat
 	defaults write NSGlobalDomain KeyRepeat -int 2                                 # enable faster key repeat
 
