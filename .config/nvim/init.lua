@@ -24,6 +24,7 @@ vim.pack.add({
 	{ src = "https://github.com/nvim-tree/nvim-tree.lua" },
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
 	{ src = "https://github.com/vim-test/vim-test" },
+	{ src = "https://github.com/ledger/vim-ledger" },
 	-- { src = "https://github.com/folke/which-key.nvim" },
 })
 
@@ -43,7 +44,7 @@ require("plugins/matcha")
 require("plugins/mini-clue")
 require("plugins/mini-completion")
 require("plugins/rose-pine")
-require("plugins/modes")
+-- require("plugins/modes")
 require("plugins/telescope")
 require("plugins/todo-comments")
 require("plugins/tree")

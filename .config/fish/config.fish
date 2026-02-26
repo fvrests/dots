@@ -6,6 +6,7 @@ set -gx XDG_STATE_HOME $HOME/.local/state
 set -gx EDITOR nvim
 set -gx LSCOLORS ExGxBxDxCxEgEdxbxgxcxd # bold folders in ls
 set -gx GOPATH $XDG_DATA_HOME/go
+set -gx LEDGER_FILE $HOME/hledger/journals/2022.journal
 
 fish_add_path /opt/homebrew/bin
 fish_add_path $HOME/.cargo/bin

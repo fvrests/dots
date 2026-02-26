@@ -12,3 +12,5 @@ vim.keymap.set({ "n", "v" }, "<leader>gs", ":Gitsigns stage_hunk<CR>", { desc = 
 vim.keymap.set("n", "<leader>gu", ":Gitsigns undo_stage_hunk<CR>", { desc = "Undo stage hunk" })
 vim.keymap.set("n", "<leader>gS", ":Gitsigns stage_buffer<CR>", { desc = "Stage buffer" })
 vim.keymap.set({ "n", "v" }, "<leader>gR", ":Gitsigns reset_hunk<CR>", { desc = "Reset hunk" })
+vim.keymap.set({ "n", "v" }, "[h", ":Gitsigns nav_hunk prev<CR>", { desc = "Prev hunk" })
+vim.keymap.set({ "n", "v" }, "]h", ":Gitsigns nav_hunk next<CR>", { desc = "Next hunk" })
