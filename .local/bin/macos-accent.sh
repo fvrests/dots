@@ -21,13 +21,13 @@ while [[ $# -gt 0 ]]; do
 done
 
 if [[ -z "$ACCENT" ]]; then
-	printf "  %-10s %-8s     %-10s %-8s\n" "2021 iMac" "" "2024 iMac" ""
-	printf "  %-2s  \033[38;5;220m●\033[0m  %-8s  %-2s  \033[38;5;179m●\033[0m  %-8s\n" 3 "yellow" 9 "yellow"
-	printf "  %-2s  \033[38;5;77m●\033[0m  %-8s  %-2s  \033[38;5;65m●\033[0m  %-8s\n" 4 "green" 10 "green"
-	printf "  %-2s  \033[38;5;33m●\033[0m  %-8s  %-2s  \033[38;5;24m●\033[0m  %-8s\n" 5 "blue" 11 "blue"
-	printf "  %-2s  \033[38;5;168m●\033[0m  %-8s  %-2s  \033[38;5;131m●\033[0m  %-8s\n" 6 "pink" 12 "pink"
-	printf "  %-2s  \033[38;5;99m●\033[0m  %-8s  %-2s  \033[38;5;96m●\033[0m  %-8s\n" 7 "purple" 13 "purple"
-	printf "  %-2s  \033[38;5;208m●\033[0m  %-8s  %-2s  \033[38;5;130m●\033[0m  %-8s\n" 8 "orange" 14 "orange"
+	printf "  %-20s %-20s\n" "2021 iMac" "2024 iMac"
+	printf "  %-2s  \033[38;5;220m●\033[0m  %-12s  %-2s  \033[38;5;179m●\033[0m  %-8s\n" 3 "yellow" 9 "dark yellow"
+	printf "  %-2s  \033[38;5;77m●\033[0m  %-12s  %-2s  \033[38;5;65m●\033[0m  %-8s\n" 4 "green" 10 "dark green"
+	printf "  %-2s  \033[38;5;33m●\033[0m  %-12s  %-2s  \033[38;5;24m●\033[0m  %-8s\n" 5 "blue" 11 "dark blue"
+	printf "  %-2s  \033[38;5;168m●\033[0m  %-12s  %-2s  \033[38;5;131m●\033[0m  %-8s\n" 6 "pink" 12 "dark pink"
+	printf "  %-2s  \033[38;5;99m●\033[0m  %-12s  %-2s  \033[38;5;96m●\033[0m  %-8s\n" 7 "purple" 13 "dark purple"
+	printf "  %-2s  \033[38;5;208m●\033[0m  %-12s  %-2s  \033[38;5;130m●\033[0m  %-8s\n" 8 "orange" 14 "dark orange"
 	echo
 	read -rp "enter accent color number: " ACCENT
 fi
