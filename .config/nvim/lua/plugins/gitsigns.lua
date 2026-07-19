@@ -6,6 +6,7 @@ require("gitsigns").setup({
 })
 
 vim.keymap.set("n", "<leader>gp", ":Gitsigns preview_hunk<CR>", { desc = "Preview hunk" })
+vim.keymap.set("n", "<leader>gi", ":Gitsigns preview_hunk_inline<CR>", { desc = "Preview hunk (inline)" })
 vim.keymap.set("n", "<leader>gb", ":Gitsigns blame_line<cr>", { desc = "Blame current line" })
 vim.keymap.set("n", "<leader>gd", ":Gitsigns diffthis<cr>", { desc = "Diff current file" })
 vim.keymap.set({ "n", "v" }, "<leader>gs", ":Gitsigns stage_hunk<CR>", { desc = "Stage hunk" })

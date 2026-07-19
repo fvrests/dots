@@ -13,7 +13,9 @@ gui:
     selectedRangeBgColor:
       - reverse
 git:
-paging:
+  pagers:
   # --dark prevents slow loading time: https://github.com/dandavison/delta/issues/1664
-  pager: delta --dark --diff-highlight --minus-emph-style="reverse red" --minus-empty-line-marker-style="reverse red" --plus-emph-style="reverse green" --plus-empty-line-marker-style="reverse green" --hunk-header-style="line-number" --hunk-header-line-number-style="magenta" --file-style="yellow" --paging=never
-  useConfig: true
+    # - pager: delta --dark --diff-highlight --minus-emph-style="reverse red" --minus-non-emph-style="reverse red" --minus-empty-line-marker-style="reverse red" --plus-emph-style="reverse green" --plus-empty-line-marker-style="reverse green" --hunk-header-style="line-number" --hunk-header-line-number-style="magenta" --file-style="yellow" --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}" 
+    - colorArg: always
+      pager: ~/.config/lazygit/delta.sh --paging=never --syntax-theme="base16" --hunk-header-style="omit" --zero-style="dim" --line-numbers --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"
+

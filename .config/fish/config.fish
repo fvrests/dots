@@ -6,7 +6,7 @@ set -gx XDG_STATE_HOME $HOME/.local/state
 set -gx EDITOR nvim
 set -gx LSCOLORS ExGxBxDxCxEgEdxbxgxcxd # bold folders in ls
 set -gx GOPATH $XDG_DATA_HOME/go
-set -gx LEDGER_FILE $HOME/hledger/journals/2022.journal
+set -gx LEDGER_FILE $HOME/hledger/journals/2026.journal
 
 fish_add_path /opt/homebrew/bin
 fish_add_path $HOME/.cargo/bin
@@ -61,6 +61,7 @@ abbr --add ,ghostty "$EDITOR ~/.config/ghostty/config +'lcd %:p:h'"
 abbr --add ,fish "$EDITOR ~/.config/fish/config.fish +'lcd %:p:h'"
 abbr --add ,nvim "$EDITOR ~/.config/nvim/init.lua +'lcd %:p:h'"
 abbr --add ,lg "$EDITOR ~/.config/lazygit/config.yml +'lcd %:p:h'"
+abbr --add ,git "$EDITOR ~/.config/git/config +'lcd %:p:h'"
 
 # bun
 set --export BUN_INSTALL "$HOME/.bun"

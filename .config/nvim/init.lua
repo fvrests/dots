@@ -50,4 +50,7 @@ require("plugins/todo-comments")
 require("plugins/tree")
 require("plugins/treesitter")
 
+
+vim.api.nvim_create_user_command("PackUpdate", function() vim.pack.update() end, { desc = "Update packages" })
+
 vim.lsp.enable("ruby_ls")

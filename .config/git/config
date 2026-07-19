@@ -2,6 +2,11 @@
 	defaultbranch = main
 [merge]
 	conflictstyle = zdiff3
+  tool = nvim
+[mergetool "nvim"]
+  cmd = "nvim -f -c \"Gvdiffsplit!\" \"$MERGED\""
+[mergetool]
+  prompt = false
 [user]
 	name = fvrests
 	email = fvrests@icloud.com
@@ -18,6 +23,7 @@
   renames = true
 [push]
   autoSetupRemote = true
+	useForceIfIncludes = true
 [pull]
  	rebase = true
 [alias]
