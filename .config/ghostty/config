@@ -11,3 +11,7 @@ macos-icon = blueprint
 confirm-close-surface = false
 config-file = theme
 mouse-hide-while-typing = true
+
+config-file = tmux-bindings
+theme = dark:Rose Pine,light:Rose Pine Dawn
+
