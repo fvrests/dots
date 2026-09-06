@@ -4,6 +4,7 @@ set -gx XDG_DATA_HOME $HOME/.local/share
 set -gx XDG_STATE_HOME $HOME/.local/state
 
 set -gx EDITOR nvim
+set -gx FZF_DEFAULT_OPTS --no-color
 set -gx LSCOLORS ExGxBxDxCxEgEdxbxgxcxd # bold folders in ls
 set -gx GOPATH $XDG_DATA_HOME/go
 set -gx LEDGER_FILE $HOME/hledger/journals/2026.journal
@@ -45,6 +46,11 @@ if status is-interactive
         set -gx __fish_git_prompt_char_cleanslate '  '
         printf '%s%s> ' (prompt_pwd) (set_color yellow; fish_git_prompt; set_color normal)
     end
+
+    # 
+    if not set -q TMUX
+        tmux attach 2>/dev/null || tmux new -A -s (basename (pwd) | tr . _)
+    end
 end
 
 abbr --add n nvim
@@ -56,12 +62,13 @@ abbr --add .git "git --git-dir=$HOME/dots.git --work-tree=$HOME"
 abbr --add .list "git --git-dir=$HOME/dots.git --work-tree=$HOME ls-files --other --no-empty-directory --exclude-standard $HOME/.config/*"
 abbr --add .lg "lazygit --git-dir=$HOME/dots.git --work-tree=$HOME"
 
-abbr --add ,kitty "$EDITOR ~/.config/kitty/kitty.conf +'lcd %:p:h'"
-abbr --add ,ghostty "$EDITOR ~/.config/ghostty/config +'lcd %:p:h'"
 abbr --add ,fish "$EDITOR ~/.config/fish/config.fish +'lcd %:p:h'"
-abbr --add ,nvim "$EDITOR ~/.config/nvim/init.lua +'lcd %:p:h'"
-abbr --add ,lg "$EDITOR ~/.config/lazygit/config.yml +'lcd %:p:h'"
+abbr --add ,ghostty "$EDITOR ~/.config/ghostty/config +'lcd %:p:h'"
 abbr --add ,git "$EDITOR ~/.config/git/config +'lcd %:p:h'"
+abbr --add ,kitty "$EDITOR ~/.config/kitty/kitty.conf +'lcd %:p:h'"
+abbr --add ,lg "$EDITOR ~/.config/lazygit/config.yml +'lcd %:p:h'"
+abbr --add ,nvim "$EDITOR ~/.config/nvim/init.lua +'lcd %:p:h'"
+abbr --add ,tmux "$EDITOR ~/.config/tmux/tmux.conf +'lcd %:p:h'"
 
 # bun
 set --export BUN_INSTALL "$HOME/.bun"

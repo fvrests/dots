@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+set -e
+
+function goto_session() {
+	name=$(basename "$1" | tr . _)
+
+	if ! tmux has-session -t "$name" 2>/dev/null; then
+		tmux new-session -ds "$name" -c "$1"
+	fi
+
+	if [[ -n $TMUX ]]; then
+		tmux switch-client -t "$name"
+	else
+		tmux attach-session -t "$name"
+	fi
+}
+
+if [[ -n $1 ]]; then
+	goto_session $1
+	exit 0
+fi
+
+dir=$({
+	printf '%s\n' "$HOME"
+	find "$HOME/dev" "$HOME/.config" -maxdepth 1 -type d
+	printf '%s\n' "$HOME/.local/bin"
+} | sed "s|$HOME|~|" | fzf)
+
+[[ $dir ]] || exit 0
+
+selected="${dir/#\~/$HOME}"
+
+goto_session "$selected"

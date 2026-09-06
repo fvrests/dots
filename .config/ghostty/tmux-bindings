@@ -1,0 +1,26 @@
+keybind = super+,=unbind
+
+# \x02 is ctrl+b (default tmux prefix)
+# \x01 is ctrl+a (common alternative tmux prefix)
+keybind = super+w=text:\x01x
+keybind = super+t=text:\x01c
+keybind = super+comma=text:\x01,
+keybind = super+period=text:\x01.
+keybind = super+shift+left_bracket=text:\x01p
+keybind = super+shift+right_bracket=text:\x01n
+keybind = super+d=text:\x01d
+keybind = super+s=text:\x01s
+keybind = super+shift+l=text:\x01L
+keybind = super+f=text:\x01f
+keybind = super+o=text:\x01o
+keybind = super+g=text:\x01g
+keybind = super+shift+g=text:\x01G
+keybind = super+digit_1=text:\x011
+keybind = super+digit_2=text:\x012
+keybind = super+digit_3=text:\x013
+keybind = super+digit_4=text:\x014
+keybind = super+digit_5=text:\x015
+keybind = super+digit_6=text:\x016
+keybind = super+digit_7=text:\x017
+keybind = super+digit_8=text:\x018
+keybind = super+digit_9=text:\x019
